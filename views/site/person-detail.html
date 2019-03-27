@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CNWT客户管理系统</title>
+    <meta name="description" content="CNWT客户管理系统">
+    <meta name="keywords" content="CNWT客户管理系统">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="applicable-device" content="mobile">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="assets/validform/js/validform_min.js"></script>
+    <link rel="stylesheet" href="assets/validform/css/validform.css" />
+    <style>
+        /*#partnerlist { position: absolute; width: 100%; left: 0; top: 38px; padding: 0 1.5rem; z-index: 100; }*/
+        #partnerlist ul{ border:1px solid #ccc; box-shadow:1px 1px 3px #ededed; background-color: #fff;}
+        #partnerlist li{ padding:5px; font-weight:normal; cursor:pointer; text-align: left;}
+        #partnerlist li:hover{ background:#f0f0f0; color:#f60;}
+    </style>
+</head>
+
+<body>
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <div class="tpl-logo">CNWT客户管理系统</div>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right"> </div>
+        <div class="am-fl welcome">用户设定的欢迎词~~~~~~</div>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+                <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                    <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                        <span class="tpl-header-list-user-nick am-icon-user"> 用户名</span>
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li><a href="#"><span class="am-icon-cog"></span> 修改密码</a></li>
+                        <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                导航
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-cubes am-icon-fw"></i>
+                            <span>项目管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                            <li>
+                                <a href="" class="active">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>项目管理</span>
+                                </a>
+                                <a href="">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>创建项目</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-user am-icon-fw"></i>
+                            <span>客户管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                            <li>
+                                <a href="">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>客户管理</span>
+                                </a>
+                                <a href="">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>创建客户</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="login.php" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms am-icon-fw"></i>
+                            <span>工作日志</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-users am-icon-fw"></i>
+                            <span>员工管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                            <li>
+                                <a href="" class="">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>员工管理</span>
+                                </a>
+                                <a href="">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>创建员工</span>
+                                </a>
+                                <a href="">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>欢迎词库</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                人事详情
+            </div>
+            <div class="tpl-portlet-components">
+
+                <div class="tpl-block">
+                    <div class="portlet-title">
+                        <div class="caption bold">
+                            个人信息
+                        </div>
+                        <div class="tpl-portlet-input tpl-fz-ml" style="float: none;">
+                            <a href="" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-pencil-square-o"></span> 修改个人信息</a>
+                        </div>
+                    </div>
+
+                    <div class="am-g tpl-amazeui-form">
+
+                        <div class="am-u-sm-12 am-u-md-10 am-text-sm">
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">姓名：</div>
+                                <div class="am-u-sm-9">王倩</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">性别：</div>
+                                <div class="am-u-sm-9">女</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">科室：</div>
+                                <div class="am-u-sm-9">技术科</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">职务：</div>
+                                <div class="am-u-sm-9">科长</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">电话：</div>
+                                <div class="am-u-sm-9">12313212313</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">QQ：</div>
+                                <div class="am-u-sm-9">456456231</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">微信号：</div>
+                                <div class="am-u-sm-9">yy1233333</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="tpl-portlet-components">
+
+                <div class="tpl-block">
+                    <div class="portlet-title">
+                        <div class="caption bold">
+                            任职经历
+                        </div>
+                        <div class="tpl-portlet-input tpl-fz-ml" style="float: none;">
+                            <button type="button" id="exp-add" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-plus"></span> 新增任职经历</button>
+                        </div>
+                    </div>
+
+                    <div class="am-g am-padding-vertical-sm">
+                        <div class="am-u-sm-12 am-u-md-10 am-text-sm">
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">单位：</div>
+                                <div class="am-u-sm-9">沙家浜度假区管委会</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">部门：</div>
+                                <div class="am-u-sm-9">营销部</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">职务：</div>
+                                <div class="am-u-sm-9">营销总监</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">入职时间：</div>
+                                <div class="am-u-sm-9">2018年10月 至 今</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="am-g am-padding-vertical-sm">
+                        <div class="am-u-sm-12 am-u-md-10 am-text-sm">
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">单位：</div>
+                                <div class="am-u-sm-9">沙家浜度假区管委会</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">部门：</div>
+                                <div class="am-u-sm-9">营销部</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">职务：</div>
+                                <div class="am-u-sm-9">营销总监</div>
+                            </div>
+                            <div class="am-cf am-margin-vertical-sm">
+                                <div class="am-u-sm-3 am-text-right">入职时间：</div>
+                                <div class="am-u-sm-9">2018年10月 至 2019年10月</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tpl-portlet-components">
+
+                <div class="tpl-block">
+                    <div class="portlet-title">
+                        <div class="caption bold">
+                            个人信息
+                        </div>
+                        <div class="tpl-portlet-input tpl-fz-ml" style="float: none;">
+                            <button type="button" id="info-add" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-plus"></span> 新增个人信息</button>
+                        </div>
+                    </div>
+
+                    <div class="am-g">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="">序号</th>
+                                <th class="">详情</th>
+                                <th class="">记录人</th>
+                                <th class="">时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>哈是的哈结婚登记卡刷卡的骄傲和结婚卡了</td>
+                                <td>不知道</td>
+                                <td>2019-10-10</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="exp-prompt">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">新增任职经历</div>
+            <div class="am-modal-bd">
+                <form class="am-form am-form-horizontal am-text-sm am-padding-top" id="edit-exp">
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">单位</label>
+                        <div class="am-u-sm-9">
+                            <input type="hidden" name="partnerid" id="partnerid" value="$row[partnerid]" class="am-form-field" datatype="*" nullmsg="请选择单位" errormsg="请选择单位" />
+                            <input type="text" name="partnername" id="partnername" value="$row[partnername]" class="am-form-field" onKeyUp="ajaxShop(this);" autocomplete="off"/>
+                            <b id="partnerlist">
+                                <ul><li onclick="$('#partnerid').val('175');$('#partnername').val('常熟常通哈弗4S店');$(this).parent().hide();">常熟常通哈弗4S店</li></ul>
+                            </b>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">部门</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" class="am-form-field am-radius" placeholder="部门" autocomplete="off" datatype="*" nullmsg="请填写部门" errormsg="请填写部门">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">职务</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" class="am-form-field am-radius" placeholder="职务" autocomplete="off" datatype="*" nullmsg="请填写职务" errormsg="请填写职务">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">在职时间</label>
+                        <div class="am-u-sm-9 am-g-collapse">
+                            <div class="am-u-sm-5">
+                                <input type="text" class="am-form-field am-radius" id="start-date" placeholder="预估开始时间" readonly="readonly" autocomplete="off">
+                            </div>
+                            <div class="am-u-sm-2 am-text-center am-text-sm am-padding-top-xs">至</div>
+                            <div class="am-u-sm-5">
+                                <input type="text" class="am-form-field am-radius" id="end-date" placeholder="预估结束时间" readonly="readonly" autocomplete="off">
+                            </div>
+                            <small class="Validform_checktip am-text-danger" id="date-alert"></small>
+                        </div>
+                    </div>
+                    <div class="am-cf am-padding-vertical-sm">
+                        <div class="am-u-sm-6">
+                            <button type="button" class="am-btn am-btn-block" data-am-modal-close>取消</button>
+                        </div>
+                        <div class="am-u-sm-6">
+                            <button type="submit" class="am-btn am-btn-danger am-btn-block">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="info-prompt">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">新增个人信息</div>
+            <div class="am-modal-bd">
+                <form class="am-form am-form-horizontal am-text-sm am-padding-top" id="info-form">
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">个人信息</label>
+                        <div class="am-u-sm-9">
+                            <textarea class="am-form-field am-radius" placeholder="请输入客户兴趣爱好，个人情况等信息" datatype="*" nullmsg="请填写个人信息" errormsg="请填写个人信息" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="am-cf am-padding-vertical-sm">
+                        <div class="am-u-sm-6">
+                            <button type="button" class="am-btn am-btn-block" data-am-modal-close>取消</button>
+                        </div>
+                        <div class="am-u-sm-6">
+                            <button type="submit" class="am-btn am-btn-danger am-btn-block">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <!--datetimepicker-->
+    <link rel="stylesheet" href="assets/datetimepicker/css/amazeui.datetimepicker.css" />
+    <script src="assets/datetimepicker/js/amazeui.datetimepicker.min.js" type="text/javascript"></script>
+    <script src="assets/datetimepicker/js/amazeui.datetimepicker.zh-CN.js" type="text/javascript" charset="UTF-8"></script>
+    <script>
+        function ajaxShop(obj) {
+            var words = $(obj).val();
+            $.ajax({
+                type: 'GET',
+                url: "?mod=ajax&action=partner&do=partner_list&words=" + words + "&rand=" + Math.random(),
+                dataType: 'html',
+                success: function (result) {
+                    $('#partnerlist').html(result);
+                }
+            });
+        }
+
+        $(function(){
+            $('#info-add').on('click', function() {
+                $('#info-prompt').modal();
+            });
+            $("#edit-exp").Validform({
+                tiptype:'wap',
+                ajaxPost: true,
+                callback:function(data){
+
+                }
+            });
+
+            $('#exp-add').on('click', function() {
+                $('#info-prompt').modal();
+            });
+            $("#info-form").Validform({
+                tiptype:'wap',
+                ajaxPost: true,
+                callback:function(data){
+
+                }
+            });
+
+            $('#start-date').datetimepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                minView: 2,
+                endDate: new Date(),
+            }).on('changeDate', function(ev){
+                $('#end-date').datetimepicker('setStartDate', ev.date);
+            });
+            $('#end-date').datetimepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                minView: 2,
+                endDate: new Date(),
+            }).on('changeDate', function(ev){
+                $('#start-date').datetimepicker('setEndDate', ev.date);
+            });
+        });
+    </script>
+</body>
+</html>
