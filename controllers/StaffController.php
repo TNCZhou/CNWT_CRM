@@ -155,8 +155,8 @@ class StaffController extends Controller
     {
         $query = Welcome::find();
         $keyword = \Yii::$app->request->get('keyword');
-        if($keyword)
-            $query->where(['like','content', $keyword]);
+        if ($keyword)
+            $query->where(['like', 'content', $keyword]);
         $pagination = new Pagination(['totalCount' => $query->count(), 'defaultPageSize' => 20]);
         $query->orderBy('id desc');
         $list = $query->offset($pagination->offset)->limit($pagination->limit)->all();
@@ -169,7 +169,12 @@ class StaffController extends Controller
 
     public function actionWelcomeImport()
     {
-        $input = \Yii::$app->request->post('data');
+        $file = UploadedFile::getInstanceByName('file');
+        $input = file_get_contents($file->tempName);
+        $encode = mb_detect_encoding($input, array('ASCII', 'GB2312', 'GBK','UTF-8'));
+        if($encode != 'UTF-8') {
+            $input = iconv($encode, 'utf-8', $input);
+        }
         $words = explode("\n", $input);
         foreach ($words as $w) {
             if ($w) {

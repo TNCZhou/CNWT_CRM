@@ -76,22 +76,23 @@
         var file = this.files[0];
         console.log(file);
         formData.append('file', file);
-        var reader = new FileReader();
-        reader.readAsText(file, 'utf-8');
-        reader.onload = function (eve) {
-            var fileString = eve.target.result;
+        //var reader = new FileReader();
+        //reader.readAsText(file, 'utf-8');
+        //reader.onload = function (eve) {
+        //    var fileString = eve.target.result;
             $.ajax({
                 url: "<?=\yii\helpers\Url::to(['staff/welcome-import'])?>",
-                type: 'post',
-                data: {
-                    data: fileString
-                },
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (data) {
+                    alert(data);
                     alert(data.msg);
                     location.reload();
                 }
             })
-        }
+        //}
 
     })
     $('.delete').click(function () {
