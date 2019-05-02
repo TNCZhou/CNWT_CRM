@@ -14,7 +14,10 @@ class Welcome extends \yii\db\ActiveRecord
     public static function getRandomContent()
     {
         $ids = self::find()->select('id,content')->asArray()->all();
-        $rand = mt_rand(0,count($ids)-1);
-        return $ids[$rand]['content'];
+		if($ids){
+			$rand = mt_rand(0,count($ids)-1);
+			return $ids[$rand]['content'];
+		}
+		return '';
     }
 }

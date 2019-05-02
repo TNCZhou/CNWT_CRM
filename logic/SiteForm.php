@@ -13,36 +13,36 @@ class SiteForm extends Model
     public static function getMenu()
     {
         $menu = [
-//            [
-//                'name' => '项目管理',
-//                'icon' => 'am-icon-cubes',
-//                'group' => 'project',
-//                'sub' => [
-//                    [
-//                        'name' => '项目管理',
-//                        'route' => 'project/index',
-//                    ],
-//                    [
-//                        'name' => '创建项目',
-//                        'route' => 'project/add'
-//                    ],
-//                ]
-//            ],
-//            [
-//                'name' => '客户管理',
-//                'icon' => 'am-icon-user',
-//                'group' => 'customer',
-//                'sub' => [
-//                    [
-//                        'name' => '客户管理',
-//                        'route' => 'customer/index',
-//                    ],
-//                    [
-//                        'name' => '创建客户',
-//                        'route' => 'customer/add'
-//                    ],
-//                ]
-//            ],
+            [
+                'name' => '项目管理',
+                'icon' => 'am-icon-cubes',
+                'group' => 'project',
+                'sub' => [
+                    [
+                        'name' => '项目管理',
+                        'route' => 'project/index',
+                    ],
+                    [
+                        'name' => '创建项目',
+                        'route' => 'project/add'
+                    ],
+                ]
+            ],
+            [
+                'name' => '客户管理',
+                'icon' => 'am-icon-user',
+                'group' => 'customer',
+                'sub' => [
+                    [
+                        'name' => '客户管理',
+                        'route' => 'customer/index',
+                    ],
+                    [
+                        'name' => '创建客户',
+                        'route' => 'customer/add'
+                    ],
+                ]
+            ],
             [
                 'name' => '工作日志',
                 'icon' => 'am-icon-wpforms',

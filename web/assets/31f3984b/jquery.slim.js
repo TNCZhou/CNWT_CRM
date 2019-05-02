@@ -664,7 +664,7 @@ var i,
 			return ch.slice( 0, -1 ) + "\\" + ch.charCodeAt( ch.length - 1 ).toString( 16 ) + " ";
 		}
 
-		// Other potentially-special ASCII characters get backslash-escaped
+		// CustomerOther potentially-special ASCII characters get backslash-escaped
 		return "\\" + ch;
 	},
 
@@ -3433,11 +3433,11 @@ function adoptValue( value, resolve, reject, noValue ) {
 		if ( value && isFunction( ( method = value.promise ) ) ) {
 			method.call( value ).done( resolve ).fail( reject );
 
-		// Other thenables
+		// CustomerOther thenables
 		} else if ( value && isFunction( ( method = value.then ) ) ) {
 			method.call( value, resolve, reject );
 
-		// Other non-thenables
+		// CustomerOther non-thenables
 		} else {
 
 			// Control `resolve` arguments by letting Array#slice cast boolean `noValue` to integer:

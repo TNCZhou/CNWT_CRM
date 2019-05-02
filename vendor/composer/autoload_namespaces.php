@@ -10,6 +10,7 @@ return array(
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
+    'Detection' => array($vendorDir . '/mobiledetect/mobiledetectlib/namespaced'),
     'Codeception\\' => array($vendorDir . '/codeception/specify/src'),
     'Behat\\Gherkin' => array($vendorDir . '/behat/gherkin/src'),
 );

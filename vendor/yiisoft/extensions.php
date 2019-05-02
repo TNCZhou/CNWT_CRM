@@ -48,4 +48,13 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'alexandernst/yii2-device-detect' => 
+  array (
+    'name' => 'alexandernst/yii2-device-detect',
+    'version' => '0.0.12.0',
+    'alias' => 
+    array (
+      '@alexandernst/devicedetect' => $vendorDir . '/alexandernst/yii2-device-detect',
+    ),
+  ),
 );

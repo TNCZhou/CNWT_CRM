@@ -39,6 +39,10 @@ class ComposerStaticInit74af90ffde8ada6eed71c26f05d271ab
         array (
             'cebe\\markdown\\' => 14,
         ),
+        'a' => 
+        array (
+            'alexandernst\\devicedetect\\' => 26,
+        ),
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
@@ -125,6 +129,10 @@ class ComposerStaticInit74af90ffde8ada6eed71c26f05d271ab
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'alexandernst\\devicedetect\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alexandernst/yii2-device-detect',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -242,6 +250,10 @@ class ComposerStaticInit74af90ffde8ada6eed71c26f05d271ab
             array (
                 0 => __DIR__ . '/..' . '/phpspec/php-diff/lib',
             ),
+            'Detection' => 
+            array (
+                0 => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/namespaced',
+            ),
         ),
         'C' => 
         array (
@@ -263,6 +275,7 @@ class ComposerStaticInit74af90ffde8ada6eed71c26f05d271ab
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
