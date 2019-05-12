@@ -214,14 +214,17 @@ class CustomerController extends Controller
                     'end_date' => 0,
                     'person_id' => $person->person_id
                 ]);
-                $lastExperience->end_date = $person->start_date - 3600 * 24;
-                if (!$lastExperience->save()) {
-                    $t->rollBack();
-                    return [
-                        'code' => 500,
-                        'msg' => $lastExperience->getErrorSummary(false)[0]
-                    ];
+                if($lastExperience) {
+                    $lastExperience->end_date = $person->start_date - 3600 * 24;
+                    $lastExperience->save();
                 }
+//                if (!$lastExperience->save()) {
+//                    $t->rollBack();
+//                    return [
+//                        'code' => 500,
+//                        'msg' => $lastExperience->getErrorSummary(false)[0]
+//                    ];
+//                }
                 $cp = CustomerPerson::findOne($person->person_id);
                 $cp->customer_id = $person->company;
                 if (!$cp->save()) {

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>项目管理</title>
+    <link href="assets/mui/css/mui.min.css" rel="stylesheet"/>
+    <link href="assets/mui/css/icons-extra.css" rel="stylesheet"/>
+    <link href="assets/css/public.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            mui('body').on('tap', 'a.href-a', function () {
+                document.location.href = this.href;
+            });
+        });
+    </script>
+    <script src="assets/validform/js/validform_min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/validform/css/validform.css">
+</head>
+<body>
+<form method="post" class="validform" action="">
+    <div class="mui-input-group input-group margin-vertical-sm">
+        <div class="mui-input-row">
+            <label>项目名称</label>
+            <input type="text" name="name" autocomplete="off" placeholder="请输入项目名称" value="小猪佩奇111" datatype="*" nullmsg="请输入项目名称" />
+        </div>
+        <div class="mui-input-row has-units">
+            <label>客户名称</label>
+            <div class="readonly-input select" id="customers">请选择客户</div>
+            <span class="mui-input-units mui-icon mui-icon-arrowdown"></span>
+            <input type="hidden" name="customers" value="" datatype="*" nullmsg="请选择客户" />
+        </div>
+        <div class="mui-input-row">
+            <label>对接人</label>
+            <input type="text" name="" autocomplete="off" placeholder="请填写对接人" value="" datatype="*" nullmsg="请填写对接人" />
+        </div>
+        <div class="mui-input-row has-units">
+            <label>预估案值</label>
+            <input type="number" name="" autocomplete="off" placeholder="请填写预估案值" value="" datatype="*" nullmsg="请填写预估案值" />
+            <span class="mui-input-units">元</span>
+        </div>
+        <div class="mui-input-row">
+            <label>预估周期</label>
+            <div class="readonly-input cycle-date">
+                <a class="date" id="start-date">开始时间</a>
+                <span>至</span>
+                <a class="date mui-text-right" id="end-date">结束时间</a>
+                <input type="hidden" name="start-date" value="" datatype="*" nullmsg="请选择预估周期开始时间" />
+                <input type="hidden" name="end-date" value="" datatype="*" nullmsg="请选择预估周期结束时间" />
+            </div>
+        </div>
+        <div class="mui-input-row">
+            <label>项目参与人</label>
+            <select multiple>
+                <option value="1">张三</option>
+                <option value="2">李四</option>
+                <option value="3">哈哈</option>
+                <option value="4">考</option>
+                <option value="5">阿萨德</option>
+            </select>
+            <span class="mui-icon mui-icon-arrowdown"></span>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button class="mui-btn mui-btn-primary btn-block" type="submit">提 交</button>
+    </div>
+</form>
+<script type="text/javascript" src="assets/mui/js/mui.picker.min.js"></script>
+<link href="assets/mui/css/mui.picker.min.css" rel="stylesheet"/>
+<script>
+    mui.ready(function () {
+        var limit = '';
+        mui('body').on('tap','#start-date',function(){
+            var dtPicker = new mui.DtPicker({
+                type: "date"
+            });
+            dtPicker.show(function (res) {
+                limit = res.y.value+'/'+res.m.value+'/'+res.d.value;
+                $('#start-date').html(res.value);
+                $('input[name=start-date]').val(res.value);
+                if($('input[name=end-date]').val()!=''){
+                    $('#end-date').html(res.value);
+                    $('input[name=end-date]').val(res.value);
+                }
+            })
+        });
+        mui('body').on('tap','#end-date',function(){
+            if($('input[name=start-date]').val()==''){
+                mui.toast('请先选择开始时间');
+            }else{
+                var dtPicker = new mui.DtPicker({
+                    type: "date",
+                    beginDate: new Date(limit)
+                });
+                dtPicker.show(function (res) {
+                    $('#end-date').html(res.value);
+                    $('input[name=end-date]').val(res.value);
+                })
+            }
+        });
+
+        var picker = new mui.PopPicker();
+        picker.setData([{
+            value: '1',
+            text: '叶文洁'
+        }, {
+            value: '2',
+            text: '艾AA'
+        }, {
+            value: '3',
+            text: '罗辑'
+        }, {
+            value: '4',
+            text: '云天明'
+        }]);
+        mui('body').on('tap','#customers',function(){
+            var _this = $(this);
+            picker.show(function(res) {
+                _this.html(res[0].text).addClass('fc_black');
+                $('input[name=customers]').val(res[0].value);
+            })
+        });
+
+        $(".validform").Validform({
+            tiptype:'wap',
+            ajaxPost: true,
+            callback:function(data){
+
+            }
+        });
+    })
+</script>
+
+</body>
+</html>

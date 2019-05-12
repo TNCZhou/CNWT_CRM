@@ -10,7 +10,9 @@ class Controller extends \yii\web\Controller
     public function init()
     {
         if(\Yii::getAlias('@device') == 'mobile') {
-            #$this->setViewPath(\Yii::$app->viewPath . DIRECTORY_SEPARATOR . 'wap' . substr($this->viewPath, strlen(\Yii::$app->viewPath)));
+            \Yii::$app->defaultRoute = 'site/index';
+            $this->layout = 'wap';
+            $this->setViewPath(\Yii::$app->viewPath . DIRECTORY_SEPARATOR . 'wap' . substr($this->viewPath, strlen(\Yii::$app->viewPath)));
         }
         parent::init();
     }

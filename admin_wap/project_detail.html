@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>项目详情</title>
+    <link href="assets/mui/css/mui.min.css" rel="stylesheet"/>
+    <link href="assets/mui/css/icons-extra.css" rel="stylesheet"/>
+    <link href="assets/css/public.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            mui('body').on('tap', 'a.href-a', function () {
+                document.location.href = this.href;
+            });
+        });
+    </script>
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <script src="assets/validform/js/validform_min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/validform/css/validform.css">
+</head>
+<body>
+<div class="title">项目基本信息</div>
+<div class="mui-card detail-card">
+    <div class="mui-input-group input-group list-group">
+        <div class="mui-input-row">
+            <label>项目名称</label>
+            <div class="readonly-input">微信公众号运维培训</div>
+        </div>
+        <div class="mui-input-row">
+            <label>客户名称</label>
+            <div class="readonly-input"><a href="#" class="href-a">江南集团</a></div>
+        </div>
+        <div class="mui-input-row">
+            <label>对接人</label>
+            <div class="readonly-input">王倩</div>
+        </div>
+        <div class="mui-input-row">
+            <label>预估案值</label>
+            <div class="readonly-input">50000元</div>
+        </div>
+        <div class="mui-input-row">
+            <label>预估周期</label>
+            <div class="readonly-input">2019-1-10 至 2019-2-10</div>
+        </div>
+        <div class="mui-input-row">
+            <label>项目进度</label>
+            <div class="readonly-input">项目结束</div>
+        </div>
+    </div>
+</div>
+
+<form method="post" class="validform" action="">
+    <div class="mui-card detail-card">
+        <div class="mui-input-group input-group">
+            <div class="mui-input-row has-units">
+                <label>实际产值</label>
+                <input type="number" name="" autocomplete="off" placeholder="请填写实际产值" value="600" datatype="*" nullmsg="请填写实际产值" />
+                <span class="mui-input-units">元</span>
+            </div>
+            <div class="mui-input-row">
+                <label>实际周期</label>
+                <div class="readonly-input cycle-date">
+                    <a class="date" id="start-date">开始时间</a>
+                    <span>至</span>
+                    <a class="date mui-text-right" id="end-date">结束时间</a>
+                    <input type="hidden" name="start-date" value="" datatype="*" nullmsg="请选择预估周期开始时间" />
+                    <input type="hidden" name="end-date" value="" datatype="*" nullmsg="请选择预估周期结束时间" />
+                </div>
+            </div>
+            <div class="padding-vertical mui-text-center">
+                <button type="submit" class="mui-btn mui-btn-primary btn-mini">更新</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="title">
+    项目进度详情
+    <a class="mui-btn mui-btn-primary" href="#add-progress">新增项目进度</a>
+</div>
+<div class="mui-card detail-card">
+    <div class="progress-list">
+        <div class="progress-item mui-row">
+            <div class="mui-col-sm-3 mui-col-xs-4 mui-text-right progress-time">2018-10-10</div>
+            <div class="mui-col-sm-9 mui-col-xs-8 progress-point">
+                <div class="progress-title">
+                    项目完成
+                </div>
+                <div class="progress-info">
+                    <div class="progress-info-text">项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成项目完成</div>
+                    <div class="progress-info-tip">负责人：小王<br />记录时间：2018-10-10</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress-item mui-row">
+            <div class="mui-col-sm-3 mui-col-xs-4 mui-text-right progress-time">2018-10-10</div>
+            <div class="mui-col-sm-9 mui-col-xs-8 progress-point">
+                <div class="progress-title">
+                    项目完成
+                </div>
+                <div class="progress-info">
+                    <div class="progress-info-text">项目完成项目完成项目完成项目完成项目完成</div>
+                    <div class="progress-info-tip">负责人：小王<br />记录时间：2018-10-10</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress-item mui-row">
+            <div class="mui-col-sm-3 mui-col-xs-4 mui-text-right progress-time">2018-10-10</div>
+            <div class="mui-col-sm-9 mui-col-xs-8 progress-point">
+                <div class="progress-title">
+                    项目完成
+                </div>
+                <div class="progress-info">
+                    <div class="progress-info-text">项目完成项</div>
+                    <div class="progress-info-tip">负责人：小王<br />记录时间：2018-10-10</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mui-popover mui-popover-action mui-popover-middle" id="add-progress">
+    <form method="post" class="validform-pop" action="">
+        <div class="popover-dialog">
+            <div class="popover-hd">新增项目进度</div>
+            <div class="mui-input-group input-group">
+                <div class="mui-input-row has-units">
+                    <label>项目阶段</label>
+                    <select name="" datatype="*" nullmsg="请选择项目阶段">
+                        <option value="">请选择项目阶段</option>
+                        <option value="1">客户1</option>
+                        <option value="2">客户2</option>
+                    </select>
+                    <span class="mui-icon mui-icon-arrowdown"></span>
+                </div>
+                <div class="mui-input-row">
+                    <label>跟进日期</label>
+                    <div class="readonly-input" id="date">跟进日期</div>
+                    <input type="hidden" name="date" value="" datatype="*" nullmsg="请选择跟进日期" />
+                </div>
+                <div class="mui-input-row">
+                    <label>详情</label>
+                    <textarea class="" rows="5" placeholder="添加详情"></textarea>
+                </div>
+            </div>
+            <div class="mui-popup-buttons">
+                <a class="mui-popup-button" href="#add-progress">取消</a>
+                <button type="submit" class="mui-popup-button">确定</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript" src="assets/mui/js/mui.picker.min.js"></script>
+<link href="assets/mui/css/mui.picker.min.css" rel="stylesheet"/>
+<script>
+    mui.ready(function () {
+        var limit = '';
+        mui('body').on('tap','#start-date',function(){
+            var dtPicker = new mui.DtPicker({
+                type: "date"
+            });
+            dtPicker.show(function (res) {
+                limit = res.y.value+'/'+res.m.value+'/'+res.d.value;
+                $('#start-date').html(res.value);
+                $('input[name=start-date]').val(res.value);
+                if($('input[name=end-date]').val()!=''){
+                    $('#end-date').html(res.value);
+                    $('input[name=end-date]').val(res.value);
+                }
+            })
+        });
+        mui('body').on('tap','#end-date',function(){
+            if($('input[name=start-date]').val()==''){
+                mui.toast('请先选择开始时间');
+            }else{
+                var dtPicker = new mui.DtPicker({
+                    type: "date",
+                    beginDate: new Date(limit)
+                });
+                dtPicker.show(function (res) {
+                    $('#end-date').html(res.value);
+                    $('input[name=end-date]').val(res.value);
+                })
+            }
+        });
+        mui('body').on('tap','#date',function(){
+            var dtPicker = new mui.DtPicker({
+                type: "date"
+            });
+            dtPicker.show(function (res) {
+                $('#date').html(res.value);
+                $('input[name=date]').val(res.value);
+            })
+        });
+
+        $(".validform").Validform({
+            tiptype:'wap',
+            ajaxPost: true,
+            callback:function(data){
+
+            }
+        });
+
+        $(".validform-pop").Validform({
+            tiptype:'wap',
+            ajaxPost: true,
+            callback:function(data){
+
+            }
+        });
+
+    })
+</script>
+</body>
+</html>

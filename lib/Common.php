@@ -16,7 +16,7 @@ class Common
     {
         return \yii\widgets\LinkPager::widget([
             'pagination' => $pagination,
-            'options' => ['class' => 'am-pagination tpl-pagination'],
+            'options' => ['class' => 'am-pagination tpl-pagination href-a'],
             'activePageCssClass' => 'am-active',
             'disabledPageCssClass' => 'am-disabled'
         ]);

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>客户详情</title>
+    <link href="assets/mui/css/mui.min.css" rel="stylesheet"/>
+    <link href="assets/mui/css/icons-extra.css" rel="stylesheet"/>
+    <link href="assets/css/public.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            mui('body').on('tap', 'a.href-a', function () {
+                document.location.href = this.href;
+            });
+        });
+    </script>
+    <link href="assets/css/customer.css" rel="stylesheet"/>
+    <script src="assets/validform/js/validform_min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/validform/css/validform.css">
+</head>
+<body>
+<div class="title">
+    客户信息
+    <a class="mui-btn mui-btn-primary href-a" href="customer_add.html">修改</a>
+</div>
+<div class="mui-card detail-card">
+    <div class="mui-input-group input-group list-group">
+        <div class="mui-input-row">
+            <label>单位名称</label>
+            <div class="readonly-input">常熟民政局</div>
+        </div>
+        <div class="mui-input-row">
+            <label>简称</label>
+            <div class="readonly-input">民政局</div>
+        </div>
+        <div class="mui-input-row">
+            <label>地址</label>
+            <div class="readonly-input">常熟市李闸路</div>
+        </div>
+        <div class="mui-input-row">
+            <label>星级</label>
+            <div class="readonly-input">一星</div>
+        </div>
+    </div>
+</div>
+
+<div class="title">
+    人事信息
+    <a class="mui-btn mui-btn-primary href-a" href="customer_person_add.html">新增</a>
+</div>
+<div class="mui-card detail-card">
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="">姓名</th>
+            <th class="">科室</th>
+            <th class="">职务</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a href="customer_person_detail.html" class="href-a">大师傅</a></td>
+            <td>检验科</td>
+            <td>科长</td>
+        </tr>
+        <tr>
+            <td>大师傅</td>
+            <td>检验科</td>
+            <td>科长</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="title">
+    部门信息
+    <a class="mui-btn mui-btn-primary" href="#add-department">新增</a>
+</div>
+<div class="mui-card detail-card">
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="">部门信息</th>
+            <th class="">录入人</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>技术部</td>
+            <td>大师傅</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="title">项目信息</div>
+<div class="mui-card detail-card">
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="">项目名称</th>
+            <th nowrap="nowrap">负责人</th>
+            <th nowrap="nowrap">项目阶段</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a href="" class="href-a">微信公众号运维培训</a></td>
+            <td nowrap="nowrap">大师傅</td>
+            <td nowrap="nowrap">完成</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="mui-popover mui-popover-action mui-popover-middle" id="add-department">
+    <form method="post" class="validform" action="">
+        <div class="popover-dialog">
+            <div class="popover-hd">新增部门</div>
+            <div class="mui-input-group input-group">
+                <div class="mui-input-row">
+                    <label>部门名称</label>
+                    <input type="text" name="" placeholder="请填写部门名称" value="" datatype="*" nullmsg="请填写部门名称" />
+                </div>
+            </div>
+            <div class="mui-popup-buttons">
+                <a class="mui-popup-button" href="#add-department">取消</a>
+                <button type="submit" class="mui-popup-button">确定</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $(function () {
+
+        $(".validform").Validform({
+            tiptype:'wap',
+            ajaxPost: true,
+            callback:function(data){
+
+            }
+        });
+    })
+</script>
+</body>
+</html>

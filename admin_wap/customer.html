@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>客户管理</title>
+    <link href="assets/mui/css/mui.min.css" rel="stylesheet"/>
+    <link href="assets/mui/css/icons-extra.css" rel="stylesheet"/>
+    <link href="assets/css/public.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            mui('body').on('tap', 'a.href-a', function () {
+                document.location.href = this.href;
+            });
+        });
+    </script>
+    <link href="assets/css/mui_filter.css" rel="stylesheet"/>
+    <link href="assets/css/customer.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <form class="search-form" name="search_form" method="post" action="">
+        <span class="search-icon"></span>
+        <input class="search-input" name="q" id="q" placeholder="请输入项目名称/客户名称名进行搜索" type="search" value="" />
+        <button type="submit" class="search-btn">搜索</button>
+    </form>
+</header>
+<nav class="mui-bar mui-bar-tab">
+    <a class="mui-tab-item href-a" href="index.html">
+        <span class="icon index-icon"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item href-a" href="project.html">
+        <span class="icon project-icon"></span>
+        <span class="mui-tab-label">项目管理</span>
+    </a>
+    <a class="mui-tab-item href-a" href="daily.html">
+        <span class="icon daily-icon"></span>
+        <span class="mui-tab-label">日志管理</span>
+    </a>
+    <a class="mui-tab-item mui-active">
+        <span class="icon customer-icon"></span>
+        <span class="mui-tab-label">客户管理</span>
+    </a>
+</nav>
+<ul class="mui-row bg-white filter-wrap mui-avg-xs-3">
+    <li><a href="#" class="mui-btn mui-block href-a active">全部</a></li>
+    <li><a href="#" class="mui-btn mui-block href-a">政务</a></li>
+    <li><a href="#" class="mui-btn mui-block href-a">企业</a></li>
+</ul>
+
+<div class="mui-content">
+    <div class="card-list">
+        <div class="mui-card">
+            <a class="href-a" href="customer_detail.html">
+                <div class="mui-card-header">
+                    <span class="name">江南集团微信</span>
+                    <span class="type">政务</span>
+                </div>
+                <div class="mui-card-footer">
+                    <span class="mui-badge mui-badge-primary">进行：1</span>
+                    <span class="mui-badge mui-badge-success">完成：2</span>
+                    <span class="mui-badge mui-badge-danger">丢单：1</span>
+                </div>
+            </a>
+        </div>
+        <div class="mui-card">
+            <a class="href-a" href="customer_detail.html">
+                <div class="mui-card-header">
+                    <span class="name">常熟常熟</span>
+                    <span class="type">企业</span>
+                </div>
+                <div class="mui-card-footer">
+                    <span class="mui-badge mui-badge-primary">进行：1</span>
+                    <span class="mui-badge mui-badge-success">完成：2</span>
+                    <span class="mui-badge mui-badge-danger">丢单：1</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="pagination mui-text-center">
+        <ul class="am-pagination tpl-pagination">
+            <li class="am-disabled"><a href="#">«</a></li>
+            <li class="am-active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
+    </div>
+</div>
+<a class="href-a add-btn" href="customer_add.html"></a>
+<script>
+    mui(".filter-wrap").on('tap','#filter-type-btn',function(){
+        $(this).addClass('active');
+    });
+    document.getElementById("filter-type").addEventListener('hidden', function(event) {
+        $('#filter-type-btn').removeClass('active');
+    });
+    mui('#filter-type .mui-scroll-wrapper').scroll();
+</script>
+</body>
+</html>

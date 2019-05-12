@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>日志详情</title>
+    <link href="assets/mui/css/mui.min.css" rel="stylesheet"/>
+    <link href="assets/mui/css/icons-extra.css" rel="stylesheet"/>
+    <link href="assets/css/public.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            mui('body').on('tap', 'a.href-a', function () {
+                document.location.href = this.href;
+            });
+        });
+    </script>
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <script src="assets/validform/js/validform_min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/validform/css/validform.css">
+</head>
+<body>
+<div class="mui-card detail-card">
+    <div class="mui-input-group input-group list-group">
+        <div class="mui-input-row">
+            <label>工作任务</label>
+            <div class="readonly-input">江南集团微信</div>
+        </div>
+        <div class="mui-input-row">
+            <label>工作类别</label>
+            <div class="readonly-input">企业对接</div>
+        </div>
+    </div>
+</div>
+
+<div class="mui-card detail-card">
+    <div class="mui-input-group input-group list-group">
+        <div class="mui-input-row">
+            <label>工作结果</label>
+            <div class="readonly-input">延后</div>
+        </div>
+        <div class="mui-input-row">
+            <label>时间段</label>
+            <div class="readonly-input">2018-3-10 11:00 - 2018-3-10 15:00</div>
+        </div>
+        <div class="mui-input-row">
+            <label>情况说明</label>
+            <div class="readonly-input">这些事情况刷刷的拉升科技大卡司恐龙当家</div>
+        </div>
+    </div>
+</div>
+
+<div class="mui-card detail-card">
+    <div class="mui-input-group input-group list-group">
+        <div class="mui-input-row">
+            <label>工作结果</label>
+            <div class="readonly-input">延后</div>
+        </div>
+        <div class="mui-input-row">
+            <label>时间段</label>
+            <div class="readonly-input">2018-3-10 11:00 - 2018-3-10 15:00</div>
+        </div>
+        <div class="mui-input-row">
+            <label>情况说明</label>
+            <div class="readonly-input">这些事情况刷刷的拉升科技大卡司恐龙当家</div>
+        </div>
+    </div>
+</div>
+
+<div class="margin mui-text-center">
+    <a href="daily_add.html" class="mui-btn mui-btn-primary btn-mini href-a">修改日志</a>
+</div>
+
+</body>
+</html>

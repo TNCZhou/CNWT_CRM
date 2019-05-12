@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>项目管理</title>
+    <link href="assets/mui/css/mui.min.css" rel="stylesheet"/>
+    <link href="assets/mui/css/icons-extra.css" rel="stylesheet"/>
+    <link href="assets/css/public.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            mui('body').on('tap', 'a.href-a', function () {
+                document.location.href = this.href;
+            });
+        });
+    </script>
+    <link href="assets/css/mui_filter.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <form class="search-form" name="search_form" method="post" action="">
+        <span class="search-icon"></span>
+        <input class="search-input" name="q" id="q" placeholder="请输入项目名称/客户名称名进行搜索" type="search" value="" />
+        <button type="submit" class="search-btn">搜索</button>
+    </form>
+</header>
+<nav class="mui-bar mui-bar-tab">
+    <a class="mui-tab-item href-a" href="index.html">
+        <span class="icon index-icon"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item mui-active">
+        <span class="icon project-icon"></span>
+        <span class="mui-tab-label">项目管理</span>
+    </a>
+    <a class="mui-tab-item href-a" href="daily.html">
+        <span class="icon daily-icon"></span>
+        <span class="mui-tab-label">日志管理</span>
+    </a>
+    <a class="mui-tab-item href-a" href="customer.html">
+        <span class="icon customer-icon"></span>
+        <span class="mui-tab-label">客户管理</span>
+    </a>
+</nav>
+<ul class="mui-row bg-white filter-wrap mui-avg-xs-4">
+    <li><a href="#" class="mui-btn mui-block href-a active">全部</a></li>
+    <li><a href="#" class="mui-btn mui-block href-a">主导的</a></li>
+    <li><a href="#" class="mui-btn mui-block href-a">参与的</a></li>
+    <li><a href="#filter-type" id="filter-type-btn" class="mui-btn mui-block"><span class="mui-icon mui-icon-extra mui-icon-extra-filter"></span> 筛选</a></li>
+</ul>
+<div id="filter-type" class="mui-popover filter-popover">
+    <div class="mui-row">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell"><a class="href-a active" href="#">所有状态</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">初次接洽</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">需求沟通</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">提报方案</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">合作确认</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">项目执行</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">项目交付</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">项目完成</a></li>
+                    <li class="mui-table-view-cell"><a class="href-a" href="#">丢单</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mui-scroll-wrapper mui-content">
+    <div class="mui-scroll">
+        <ul class="mui-table-view margin-top">
+            <li class="mui-table-view-cell">
+                <a class="mui-navigate-right href-a" href="project_detail.html">
+                    <span class="mui-pull-right fc_grey margin-left-sm">初次接洽</span>
+                    微信
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a class="mui-navigate-right href-a" href="#">
+                    <span class="mui-pull-right fc_grey margin-left-sm">需求沟通</span>
+                    前端开发
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a class="mui-navigate-right href-a" href="#">
+                    <span class="mui-pull-right fc_grey margin-left-sm">项目交付</span>
+                    软件开发
+                </a>
+            </li>
+        </ul>
+        <div class="pagination mui-text-center">
+            <ul class="am-pagination tpl-pagination">
+                <li class="am-disabled"><a href="#">«</a></li>
+                <li class="am-active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<a class="href-a add-btn" href="project_add.html"></a>
+<script>
+    mui('.mui-scroll-wrapper').scroll();
+
+    mui(".filter-wrap").on('tap','#filter-type-btn',function(){
+        $(this).addClass('active');
+    });
+    document.getElementById("filter-type").addEventListener('hidden', function(event) {
+        $('#filter-type-btn').removeClass('active');
+    });
+    mui('#filter-type .mui-scroll-wrapper').scroll();
+</script>
+</body>
+</html>

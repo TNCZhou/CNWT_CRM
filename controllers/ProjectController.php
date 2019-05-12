@@ -59,7 +59,6 @@ class ProjectController extends Controller
     public function getQuery()
     {
         $keyword = \Yii::$app->request->get('keyword');
-        $progress = \Yii::$app->request->get('progress');
         $customer_id = \Yii::$app->request->get('customer_id');
         $progress = \Yii::$app->request->get('progress');
         $query = Project::find()->alias('p')->leftJoin(['c' => Customer::tableName()], 'p.customer_id = c.id');
@@ -92,9 +91,11 @@ class ProjectController extends Controller
         $project = Project::findOne([
             'id' => $id
         ]);
+        $userList = User::find()->where(['>', 'level', 0])->orderBy(' CONVERT(realname USING gbk) asc')->all();
         return $this->render('project-detail', [
             'customerList' => $customerList,
-            'project' => $project
+            'project' => $project,
+            'userList' => $userList
         ]);
     }
 
@@ -103,7 +104,11 @@ class ProjectController extends Controller
         if (\Yii::$app->request->isPost) {
             $form = new Project();
             $form->setAttributes(\Yii::$app->request->post());
-            $form->project_participants = implode(',', \Yii::$app->request->post('project_participants'));
+            $p = \Yii::$app->request->post('project_participants');
+            if($p) {
+                $p = implode(',',$p);
+            }
+            $form->project_participants = $p;
             $form->save();
             return $this->redirect(['project/detail', 'id' => $form->id]);
         } else {
@@ -124,12 +129,17 @@ class ProjectController extends Controller
                 'id' => $id
             ]);
             if (!$form) {
-                return [
+                return $this->renderJson([
                     'code' => 404,
                     'msg' => '项目不存在'
-                ];
+                ]);
             }
             $form->setAttributes(\Yii::$app->request->post());
+            $p = \Yii::$app->request->post('project_participants');
+            if($p) {
+                $p = implode(',',$p);
+            }
+            $form->project_participants = $p;
             $form->save();
             return $this->renderJson([
                 'code' => 200,

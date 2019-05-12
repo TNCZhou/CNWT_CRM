@@ -29,7 +29,7 @@ class SiteController extends Controller
      */
     public function actionLogin() {
         if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect([\Yii::$app->defaultRoute]);
         }
         if(\Yii::$app->request->isPost) {
             $model = new LoginForm();
@@ -72,5 +72,10 @@ class SiteController extends Controller
     {
         \Yii::$app->user->logout();
         return $this->redirect(['site/login']);
+    }
+
+    public function actionIndex()
+    {
+        return $this->render('index');
     }
 }

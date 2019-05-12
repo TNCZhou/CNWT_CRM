@@ -1,0 +1,24 @@
+.card-list .mui-card { margin: 15px;}
+.card-list .mui-card .mui-card-header { font-size: 14px; min-height: auto; padding: 8px 15px; color: #2d8cf0;}
+.card-list .mui-card .mui-card-header:after { display: none;}
+.card-list .mui-card .mui-card-header .name { flex: 1;}
+.card-list .mui-card .mui-card-header .type { padding-left: 15px; margin-left: 15px; border-left: 1px solid #ddd; color: #666;}
+.card-list .mui-card .mui-card-footer { color: #999; justify-content: flex-end;}
+.card-list .mui-card .mui-card-footer:before { height: 0;}
+.card-list .mui-card .mui-card-footer .mui-badge { margin-left: 10px;}
+
+.mui-input-row .input-cont .mui-radio.mui-left { display: inline-block;}
+.mui-radio input[type=radio]:before { font-size: 26px;}
+
+.exp-list { padding: 15px;}
+.exp-list .exp-item { margin-bottom: 15px; border: 1px solid #e8eaec;}
+.exp-list .exp-item:last-child { margin-bottom: 0;}
+.exp-list .exp-item .exp-company { padding: 5px 10px; color: #000; background-color: #e8eaec; display: flex; align-items: center; justify-content: space-between;}
+.exp-list .exp-item .exp-company .del { font-size: 12px;}
+.exp-list .exp-item .exp-info { font-size: 12px; padding: 5px 10px;}
+
+.mui-input-row.visible-row { overflow: visible;}
+
+#companylist { position: absolute; width: 65%; right: 0; top: 42px; z-index: 100; border: 1px solid #ddd; border-right: none; background-color: #fff; padding: 5px 0; display: none;}
+#companylist .company-item { padding:5px 25px 5px 5px; position: relative; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+#companylist .company-item:after { content: '\e583'; font-family: Muiicons; display: inline-block; position: absolute; right: 5px;}

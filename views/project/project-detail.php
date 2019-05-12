@@ -100,10 +100,34 @@
                 <form action="<?=\yii\helpers\Url::to(['project/edit','id' => $project->id])?>"  method="post" class="am-form am-form-horizontal am-text-sm am-padding-top" id="edit-prompt">
                     <input type="hidden" name="id" value="<?=$project->id?>">
                     <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">项目负责人</label>
+                        <div class="am-u-sm-9">
+                            <select name="project_incharge" data-am-selected="{searchBox: 1,btnWidth: '100%'}">
+                                <?php foreach($userList as $k=>$v):?>
+                                    <option value="<?=$v->id?>" <?php if($v->id == $project->project_incharge):?>selected<?php endif;?> ><?=$v->realname?></option>
+                                <?php endforeach;?>
+                            </select>
+                            <small class="Validform_checktip"></small>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">项目参与人</label>
+                        <div class="am-u-sm-9">
+                            <select name="project_participants[]" multiple data-am-selected="{searchBox: 1,btnWidth: '100%'}">
+                                <?php $pplist = explode(',', $project->project_participants);?>
+                                <?php foreach($userList as $k=>$v):?>
+                                    <option value="<?=$v->id?>" <?php if(in_array($v->id,$pplist)):?>selected<?php endif?>><?=$v->realname?></option>
+                                <?php endforeach;?>
+                            </select>
+                            <small class="Validform_checktip"></small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label">实际产值</label>
                         <div class="am-u-sm-9">
                             <div class="am-input-group">
-                                <input name="real_price" type="number" class="am-form-field" placeholder="预估案值" autocomplete="off" datatype="n" nullmsg="请输入预估案值" errormsg="仅限数字">
+                                <input name="real_price" value="<?=$project->real_price?>" type="number" class="am-form-field" placeholder="预估案值" autocomplete="off" datatype="n" nullmsg="请输入预估案值" errormsg="仅限数字">
                                 <span class="am-input-group-label">元</span>
                             </div>
                         </div>
@@ -112,11 +136,11 @@
                         <label class="am-u-sm-3 am-form-label">实际周期</label>
                         <div class="am-u-sm-9 am-g-collapse">
                             <div class="am-u-sm-5">
-                                <input name="real_start_date" type="text" class="am-form-field am-radius" id="start-date" placeholder="预估开始时间" readonly="readonly" autocomplete="off">
+                                <input name="real_start_date" value="<?=$project->real_start_date?>" type="text" class="am-form-field am-radius" id="start-date" placeholder="预估开始时间" readonly="readonly" autocomplete="off">
                             </div>
                             <div class="am-u-sm-2 am-text-center am-text-sm am-padding-top-xs">至</div>
                             <div class="am-u-sm-5">
-                                <input name="real_end_date" type="text" class="am-form-field am-radius" id="end-date" placeholder="预估结束时间" readonly="readonly" autocomplete="off">
+                                <input name="real_end_date" type="text" value="<?=$project->real_end_date?>" class="am-form-field am-radius" id="end-date" placeholder="预估结束时间" readonly="readonly" autocomplete="off">
                             </div>
                             <small class="Validform_checktip am-text-danger" id="date-alert"></small>
                         </div>

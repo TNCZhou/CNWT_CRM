@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>CNWT客户管理系统</title>
+    <link href="assets/mui/css/mui.min.css" rel="stylesheet"/>
+    <link href="assets/mui/css/icons-extra.css" rel="stylesheet"/>
+    <link href="assets/css/public.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            mui('body').on('tap', 'a.href-a', function () {
+                document.location.href = this.href;
+            });
+        });
+    </script>
+    <link href="assets/css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <h1 class="mui-title">欢迎 biubiubiu</h1>
+    <a class="mui-action-menu mui-icon mui-icon-contact mui-pull-right" href="#topPopover"></a>
+</header>
+<div id="topPopover" class="mui-popover top-popover">
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell"><a href="#" class="href-a">修改密码</a></li>
+        <li class="mui-table-view-cell"><a href="#" class="href-a">退出登录</a></li>
+    </ul>
+</div>
+<div class="mui-content">
+    <div class="welcome">欢迎欢迎，热烈欢迎~~~~</div>
+    <div class="btn-list">
+        <a href="project.html" class="big-btn href-a mui-btn-primary">
+            <img src="assets/images/project.png" />
+            <p>项目管理</p>
+        </a>
+        <a href="daily.html" class="big-btn href-a mui-btn-primary">
+            <img src="assets/images/daily.png" />
+            <p>日志管理</p>
+        </a>
+        <a href="customer.html" class="big-btn href-a mui-btn-primary">
+            <img src="assets/images/customer.png" />
+            <p>客户管理</p>
+        </a>
+    </div>
+</div>
+</body>
+</html>

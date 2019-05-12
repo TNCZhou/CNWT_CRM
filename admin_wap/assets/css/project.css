@@ -1,0 +1,82 @@
+.progress-list { padding: 10px 0}
+
+.progress-list [class*=mui-col-] {
+    padding-right: 15px;
+}
+
+.progress-list [class*=mui-col-] + [class*=mui-col-]{
+    padding-right: 10px;
+    padding-left: 15px;
+}
+
+.progress-list .progress-time {
+    color: #888;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+.progress-list .progress-item .progress-point:before {
+    content: '\e441';
+    font-family: Muiicons;
+    color: #2d8cf0;
+    font-size: 16px;
+    line-height: 1;
+    position: absolute;
+    left: -9px;
+    top: 6px;
+    z-index: 2;
+    display: block;
+}
+
+.progress-list .progress-item .progress-point:after {
+    content: '';
+    width: 2px;
+    position: absolute;
+    left: -2px;
+    top: 22px;
+    bottom: -8px;
+    background-color: #2d8cf0;
+    display: block;
+}
+
+.progress-list .progress-item:last-child .progress-point:after {
+    display: none;
+}
+
+.progress-list .progress-item .progress-point {
+    padding-bottom: 20px;
+}
+
+.progress-list .progress-title {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.progress-list .progress-title > span {
+    font-size: 12px;
+    margin-left: 20px;
+    line-height: 20px;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #666;
+}
+
+.progress-list .progress-info {
+    border: 1px solid #ddd;
+    font-size: 12px;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+.progress-list .progress-info .progress-info-text {
+    padding: 10px;
+}
+
+.progress-list .progress-info .progress-info-tip {
+    display: block;
+    background-color: #f0f0f0;
+    padding: 5px;
+    color: #999;
+    line-height: 1.4;
+}

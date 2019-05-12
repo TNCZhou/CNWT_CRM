@@ -13,7 +13,7 @@
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-inline">
                             <div class="am-input-group am-input-group-sm">
-                                <input name="keyword" value="<?=$keyword?>" type="text" class="am-form-field" placeholder="请输入部门名称、简称进行搜索">
+                                <input name="keyword" value="<?=$keyword?>" type="text" class="am-form-field" placeholder="请输入客户名称、简称进行搜索">
                                 <span class="am-input-group-btn">
             <button class="am-btn  am-btn-default am-btn-primary am-icon-search" type="button" onclick="location.href='<?= \yii\helpers\Url::to(['customer/index']) ?>&type='+$('#project-select').val()+'&keyword='+$('input[name=keyword]').val()"></button>
           </span>
