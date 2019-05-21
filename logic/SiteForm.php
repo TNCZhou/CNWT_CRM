@@ -17,31 +17,13 @@ class SiteForm extends Model
                 'name' => '项目管理',
                 'icon' => 'am-icon-cubes',
                 'group' => 'project',
-                'sub' => [
-                    [
-                        'name' => '项目管理',
-                        'route' => 'project/index',
-                    ],
-                    [
-                        'name' => '创建项目',
-                        'route' => 'project/add'
-                    ],
-                ]
+				'route' => 'project/index',
             ],
             [
                 'name' => '客户管理',
                 'icon' => 'am-icon-user',
                 'group' => 'customer',
-                'sub' => [
-                    [
-                        'name' => '客户管理',
-                        'route' => 'customer/index',
-                    ],
-                    [
-                        'name' => '创建客户',
-                        'route' => 'customer/add'
-                    ],
-                ]
+				'route' => 'customer/index',
             ],
             [
                 'name' => '工作日志',
@@ -55,21 +37,14 @@ class SiteForm extends Model
                 'name' => '员工管理',
                 'icon' => 'am-icon-users',
                 'group' => 'staff',
-                'sub' => [
-                    [
-                        'name' => '员工管理',
-                        'route' => 'staff/index',
-                    ],
-                    [
-                        'name' => '创建员工',
-                        'route' => 'staff/add'
-                    ],
-                    [
-                        'name' => '欢迎词库',
-                        'route' => 'staff/welcome'
-                    ]
-                ]
-            ]);
+				'route' => 'staff/index',
+            ],
+			[
+				'name' => '欢迎词库',
+				'icon' => 'am-icon-file-text-o',
+				'group' => 'staff',
+				'route' => 'staff/welcome',
+			]);
         return $menu;
     }
 }

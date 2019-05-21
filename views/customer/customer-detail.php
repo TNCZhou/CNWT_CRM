@@ -51,6 +51,14 @@
                         <div class="tpl-portlet-input tpl-fz-ml" style="float: none;">
                             <a href="<?=\yii\helpers\Url::to(['customer/person-add','customer_id' => $customer->id])?>" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-plus"></span> 新增人事信息</a>
                         </div>
+						<div class="portlet-input input-inline" style="float: right;">
+                            <div class="am-input-group am-input-group-sm">
+                                <input name="keyword" value="<?=$keyword?>" type="text" class="am-form-field" autocomplete="off" placeholder="请输入名字进行搜索">
+                                <span class="am-input-group-btn">
+            <button class="am-btn  am-btn-default am-btn-primary am-icon-search" type="button" onclick="location.href='<?= \yii\helpers\Url::to(['customer/index']) ?>&type='+$('#project-select').val()+'&keyword='+$('input[name=keyword]').val()"></button>
+          </span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="am-g">
@@ -72,7 +80,7 @@
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <a href="<?=\yii\helpers\Url::to(['customer/person-detail','id' => $v->id])?>" class="am-btn am-btn-default am-btn-xs am-text-primary"><span class="am-icon-file-text-o"></span> 详情</a>
+                                            <a href="<?=\yii\helpers\Url::to(['customer/person-detail','id' => $v->id])?>" class="am-btn am-btn-default am-btn-xs am-text-primary" target="_blank"><span class="am-icon-file-text-o"></span> 详情</a>
                                         </div>
                                     </div>
                                 </td>

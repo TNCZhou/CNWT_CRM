@@ -50,7 +50,7 @@ echo $this->render('../header',[
         </div>
     </div>
 </div>
-<a class="href-a add-btn" href="project_add.html"></a>
+<a class="href-a add-btn" href="<?=\yii\helpers\Url::to(['project/add'])?>"></a>
 <script>
     mui('.mui-scroll-wrapper').scroll();
 

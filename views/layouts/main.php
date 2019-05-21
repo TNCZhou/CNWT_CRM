@@ -76,7 +76,7 @@ AppAsset::register($this);
                 <?php foreach ($menu as $m): ?>
                     <li class="tpl-left-nav-item">
                         <a href="<?php echo $m['route'] ? \yii\helpers\Url::to([$m['route']]) : 'javascript:;' ?>"
-                           class="nav-link tpl-left-nav-link-list">
+                           class="nav-link tpl-left-nav-link-list <?php echo \Yii::$app->controller->id == $m['group'] ? 'active' : '' ?>">
                             <i class="<?php echo $m['icon'] ?> am-icon-fw"></i>
                             <span><?php echo $m['name'] ?></span>
                             <?php if ($m['sub']): ?>

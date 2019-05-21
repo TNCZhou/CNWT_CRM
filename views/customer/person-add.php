@@ -36,7 +36,7 @@
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label">科室</label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="department" class="am-form-field am-radius" placeholder="科室" autocomplete="off" datatype="*" nullmsg="请填写科室" errormsg="请填写科室">
+                                        <input type="text" name="department" class="am-form-field am-radius" placeholder="科室" autocomplete="off">
                                         <small class="Validform_checktip"></small>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label">职务</label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="position" class="am-form-field am-radius" placeholder="职务" autocomplete="off" datatype="*" nullmsg="请填写职务" errormsg="请填写职务">
+                                        <input type="text" name="position" class="am-form-field am-radius" placeholder="职务" autocomplete="off">
                                         <small class="Validform_checktip"></small>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label">电话</label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="tel" class="am-form-field am-radius" placeholder="电话" autocomplete="off" datatype="m | tel" nullmsg="请填写电话" errormsg="请填写电话">
+                                        <input type="text" name="tel" class="am-form-field am-radius" placeholder="电话" autocomplete="off">
                                         <small class="Validform_checktip"></small>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label">QQ</label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="qq" class="am-form-field am-radius" placeholder="QQ" autocomplete="off" datatype="qq" nullmsg="请填写QQ" errormsg="请填写QQ">
+                                        <input type="text" name="qq" class="am-form-field am-radius" placeholder="QQ" autocomplete="off">
                                         <small class="Validform_checktip"></small>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label">微信</label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="wechat" class="am-form-field am-radius" placeholder="微信" autocomplete="off" datatype="*" nullmsg="请填写微信" errormsg="请填写微信">
+                                        <input type="text" name="wechat" class="am-form-field am-radius" placeholder="微信" autocomplete="off">
                                         <small class="Validform_checktip"></small>
                                     </div>
                                 </div>

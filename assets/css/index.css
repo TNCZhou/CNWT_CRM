@@ -1,0 +1,16 @@
+.welcome { padding: 10px 20px; text-align: center; font-size: 14px;}
+
+.btn-list { padding: 10px 50px 0;}
+.big-btn { width: 100%; display: block; text-align: center; padding: 15px 0; border-radius: 20px; margin-bottom: 30px;}
+.big-btn > img { width: 80px; height: 80px;}
+.big-btn > p { font-size: 16px; color: #fff;}
+
+@media only screen and (max-width: 320px){
+    .big-btn { margin-bottom: 25px;}
+    .big-btn > img { width: 60px; height: 60px;}
+    .big-btn > p { font-size: 14px;}
+}
+
+.mui-bar-nav.mui-bar { background-color: #2d8cf0;}
+.mui-bar-nav.mui-bar .mui-icon { color: #fff;}
+.mui-bar-nav.mui-bar .mui-title { font-size: 15px; color: #fff;}

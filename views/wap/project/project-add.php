@@ -10,7 +10,7 @@ echo $this->render('../header',[
     <div class="mui-input-group input-group margin-vertical-sm">
         <div class="mui-input-row">
             <label>项目名称</label>
-            <input type="text" name="name" autocomplete="off" placeholder="请输入项目名称" value="小猪佩奇111" datatype="*" nullmsg="请输入项目名称" />
+            <input type="text" name="name" autocomplete="off" placeholder="请输入项目名称" value="" datatype="*" nullmsg="请输入项目名称" />
         </div>
         <div class="mui-input-row has-units">
             <label>客户名称</label>

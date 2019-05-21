@@ -1,0 +1,17 @@
+.filter-popover { height: auto;}
+
+.card-list .mui-card { margin: 15px;}
+.card-list .mui-card .mui-card-header { font-size: 14px; min-height: auto; padding: 8px 15px; background-color: #2d8cf0; color: #fff;}
+.card-list .mui-card .mui-card-header:after { display: none;}
+.card-list .mui-card .mui-card-header .name { flex: 1;}
+.card-list .mui-card .mui-card-header .type { padding-left: 15px; margin-left: 15px; border-left: 1px solid #fff;}
+.card-list .mui-card .mui-card-content .mui-table-view-cell:after { background-color: #eee;}
+.card-list .mui-card .mui-card-content .mui-table-view-cell { font-size: 14px; line-height: 1.4; color: #666; display: flex; align-items: center; justify-content: space-between;}
+.card-list .mui-card .mui-card-footer { font-size: 14px; flex-direction: row-reverse;}
+.card-list .mui-card .mui-card-footer .mui-icon { font-size: 20px;}
+
+.add-more-btn { display: inline-flex; align-items: center;}
+
+@media only screen and (max-width: 360px){
+    .card-list .mui-card .mui-card-content .mui-table-view-cell { font-size: 12px;}
+}
