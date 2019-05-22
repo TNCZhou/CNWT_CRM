@@ -14,7 +14,7 @@
                     <div class="am-input-group am-input-group-sm">
                         <input value="<?=$keyword?>" id='keyword' type="text" class="am-form-field" placeholder="请输入欢迎词内容进行搜索">
                         <span class="am-input-group-btn">
-                                    <button class="am-btn  am-btn-default am-btn-primary am-icon-search" type="button" onclick="location.href='<?php echo \yii\helpers\Url::to(['staff/welcome']) ?>&keyword='+$('#keyword').val()"></button>
+                                    <button class="am-btn  am-btn-default am-btn-primary am-icon-search" type="button" onclick="location.href='<?php echo \yii\helpers\Url::to(['welcome/index']) ?>&keyword='+$('#keyword').val()"></button>
                                 </span>
                     </div>
                 </div>
@@ -81,13 +81,12 @@
         //reader.onload = function (eve) {
         //    var fileString = eve.target.result;
             $.ajax({
-                url: "<?=\yii\helpers\Url::to(['staff/welcome-import'])?>",
+                url: "<?=\yii\helpers\Url::to(['welcome/import'])?>",
                 type: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                    alert(data);
                     alert(data.msg);
                     location.reload();
                 }
@@ -98,7 +97,7 @@
     $('.delete').click(function () {
         var id = $(this).parents('tr').find('input[type=checkbox]').attr('id');
         $.ajax({
-            'url': "<?php echo \yii\helpers\Url::to(['staff/welcome-delete'])?>",
+            'url': "<?php echo \yii\helpers\Url::to(['welcome/delete'])?>",
             'data': 'id=' + id,
             'dataType': 'json',
             'success': function (data) {
@@ -119,7 +118,7 @@
         });
         idsStr = ids.join(',')
         $.ajax({
-            'url': "<?php echo \yii\helpers\Url::to(['staff/welcome-delete-all'])?>",
+            'url': "<?php echo \yii\helpers\Url::to(['welcome/delete-all'])?>",
             'data': 'ids=' + idsStr,
             'dataType': 'json',
             'success': function (data) {

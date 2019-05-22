@@ -36,14 +36,14 @@ class ProjectController extends Controller
         if ($type == 'incharge') {
             $query->andWhere(['project_incharge' => \Yii::$app->user->id]);
         } elseif ($type == 'participate') {
-            $query->andWhere(new Expression('FIND_IN_SET('.\Yii::$app->user->id.', project_participants)'));
+            $query->andWhere(new Expression('FIND_IN_SET(' . \Yii::$app->user->id . ', project_participants)'));
         }
         $pagination = new Pagination(['totalCount' => $query->count(), 'defaultPageSize' => 20]);
         $query->orderBy('p.id desc')->select('p.*');
         $list = $query->offset($pagination->offset)->limit($pagination->limit)->all();
         $params = \Yii::$app->request->getQueryParams();
 
-        $myJoin = (int)($this->getQuery()->andWhere(new Expression('FIND_IN_SET('.\Yii::$app->user->id.', project_participants)'))->count());
+        $myJoin = (int)($this->getQuery()->andWhere(new Expression('FIND_IN_SET(' . \Yii::$app->user->id . ', project_participants)'))->count());
         $myIncharge = (int)($this->getQuery()->andWhere(['project_incharge' => \Yii::$app->user->id])->count());
         return $this->render('project', [
             'progress' => \Yii::$app->params['project_progress'],
@@ -71,12 +71,12 @@ class ProjectController extends Controller
                 ]
             ]);
         }
-        if($customer_id) {
+        if ($customer_id) {
             $query->andWhere(['customer_id' => $customer_id]);
         }
-        if($progress) {
+        if ($progress) {
             $progress = explode(',', $progress);
-            if(!is_array($progress)) {
+            if (!is_array($progress)) {
                 $progress = [$progress];
             }
             $query->andWhere(['in', 'progress', $progress]);
@@ -92,10 +92,13 @@ class ProjectController extends Controller
             'id' => $id
         ]);
         $userList = User::find()->where(['>', 'level', 0])->orderBy(' CONVERT(realname USING gbk) asc')->all();
+        $participants = explode(',', $project->project_participants);
+        $InProject = in_array(\Yii::$app->user->id, $participants) || $project->project_incharge == \Yii::$app->user->id;
         return $this->render('project-detail', [
             'customerList' => $customerList,
             'project' => $project,
-            'userList' => $userList
+            'userList' => $userList,
+            'inProject' => $InProject
         ]);
     }
 
@@ -104,13 +107,23 @@ class ProjectController extends Controller
         if (\Yii::$app->request->isPost) {
             $form = new Project();
             $form->setAttributes(\Yii::$app->request->post());
+            $name = \Yii::$app->request->post('name');
+            if (Project::find()->where(['name' => $name])->count()) {
+                return $this->renderJson([
+                    'code' => -1,
+                    'msg' => '项目已存在'
+                ]);
+            }
             $p = \Yii::$app->request->post('project_participants');
-            if($p) {
-                $p = implode(',',$p);
+            if ($p) {
+                $p = implode(',', $p);
             }
             $form->project_participants = $p;
             $form->save();
-            return $this->redirect(['project/detail', 'id' => $form->id]);
+            return $this->renderJson([
+                'code' => 200,
+                'id' => $form->id
+            ]);
         } else {
             $customerList = Customer::find()->orderBy(' CONVERT(name USING gbk) asc')->all();
             $userList = User::find()->where(['>', 'level', 0])->orderBy(' CONVERT(realname USING gbk) asc')->all();
@@ -136,8 +149,8 @@ class ProjectController extends Controller
             }
             $form->setAttributes(\Yii::$app->request->post());
             $p = \Yii::$app->request->post('project_participants');
-            if($p) {
-                $p = implode(',',$p);
+            if ($p) {
+                $p = implode(',', $p);
             }
             $form->project_participants = $p;
             $form->save();
@@ -159,6 +172,20 @@ class ProjectController extends Controller
     {
         if (\Yii::$app->request->isPost) {
             $project_id = \Yii::$app->request->post('project_id');
+            $project = Project::findOne($project_id);
+            if (!$project) {
+                return $this->renderJson([
+                    'code' => -1,
+                    'msg' => '项目不存在'
+                ]);
+            }
+            $participants = explode(',', $project->project_participants);
+            if ($project->project_incharge != \Yii::$app->user->id && !in_array(\Yii::$app->user->id, $participants)) {
+                return $this->renderJson([
+                    'code' => -2,
+                    'msg' => '没有权限'
+                ]);
+            }
             $progress = new ProjectProgress();
             $progress->setAttributes(\Yii::$app->request->post());
             $progress->user_id = \Yii::$app->user->id;

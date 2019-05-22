@@ -114,6 +114,14 @@ echo $this->render('../header',[
 
         $(".validform").Validform({
             tiptype:'wap',
+            ajaxPost:true,
+            callback:function (data) {
+                if(data.code == 200) {
+                    location.href = data.id;
+                }else{
+                    alert(data.msg);
+                }
+            }
         });
     })
 </script>

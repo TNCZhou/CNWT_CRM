@@ -62,9 +62,11 @@
                         <div class="caption bold">
                             项目进度详情
                         </div>
+                        <?php if($inProject):?>
                         <div class="tpl-portlet-input tpl-fz-ml" style="float: none;">
                             <button type="button" id="add-progress" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-plus"></span> 新增项目进度</button>
                         </div>
+                        <?php endif;?>
                     </div>
 
                     <div class="am-g tpl-amazeui-form">
@@ -178,7 +180,7 @@
                     <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label">跟进日期</label>
                         <div class="am-u-sm-9">
-                            <input type="text" name="dateline" class="am-form-field am-radius" placeholder="请选择日期" readonly="readonly" data-am-datepicker autocomplete="off">
+                            <input type="text" name="dateline" class="am-form-field am-radius" placeholder="请选择日期" readonly="readonly" data-am-datepicker autocomplete="off" datatype="*" nullmsg="请选择跟进日期">
                         </div>
                     </div>
                     <div class="am-form-group">

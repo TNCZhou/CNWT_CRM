@@ -113,11 +113,19 @@ class CustomerController extends Controller
     public function actionDetail()
     {
         $id = \Yii::$app->request->get('id');
+        $personKeyword = \Yii::$app->request->get('person_key');
         $customer = Customer::findOne($id);
         $projectList = Project::find()->where(['customer_id' => $id])->all();
+        $query = CustomerPerson::find()->where(['customer_id' => $id]);
+        if ($personKeyword) {
+            $query->andWhere(['like', 'name', $personKeyword]);
+        }
+        $personList = $query->all();
         return $this->render('customer-detail', [
             'customer' => $customer,
             'projectList' => $projectList,
+            'personList' => $personList,
+            'personKeyword' => $personKeyword,
             'levels' => \Yii::$app->params['level']
         ]);
     }
@@ -142,6 +150,12 @@ class CustomerController extends Controller
         $id = \Yii::$app->request->get('id');
         $co = CustomerOther::findOne(['id' => $id]);
         if ($co) {
+            if($co->user_id != \Yii::$app->user->id) {
+                return $this->renderJson([
+                    'code' => -1,
+                    'msg' => '没有权限'
+                ]);
+            }
             $co->delete();
         }
         return $this->renderJson([
@@ -214,7 +228,7 @@ class CustomerController extends Controller
                     'end_date' => 0,
                     'person_id' => $person->person_id
                 ]);
-                if($lastExperience) {
+                if ($lastExperience) {
                     $lastExperience->end_date = $person->start_date - 3600 * 24;
                     $lastExperience->save();
                 }

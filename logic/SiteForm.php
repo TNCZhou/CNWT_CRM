@@ -42,8 +42,8 @@ class SiteForm extends Model
 			[
 				'name' => '欢迎词库',
 				'icon' => 'am-icon-file-text-o',
-				'group' => 'staff',
-				'route' => 'staff/welcome',
+				'group' => 'welcome',
+				'route' => 'welcome/index',
 			]);
         return $menu;
     }

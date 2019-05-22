@@ -59,11 +59,11 @@
                                 <label class="am-u-sm-3 am-form-label">预估周期</label>
                                 <div class="am-u-sm-9 am-g-collapse">
                                     <div class="am-u-sm-5">
-                                        <input name="plan_start_date" type="text" class="am-form-field am-radius" id="start-date" placeholder="预估开始时间" readonly="readonly" autocomplete="off">
+                                        <input name="plan_start_date" type="text" class="am-form-field am-radius" id="start-date" placeholder="预估开始时间" readonly="readonly" autocomplete="off" datatype="*" nullmsg="请选择预估开始时间">
                                     </div>
                                     <div class="am-u-sm-2 am-text-center am-text-sm am-padding-top-xs">至</div>
                                     <div class="am-u-sm-5">
-                                        <input name="plan_end_date" type="text" class="am-form-field am-radius" id="end-date" placeholder="预估结束时间" readonly="readonly" autocomplete="off">
+                                        <input name="plan_end_date" type="text" class="am-form-field am-radius" id="end-date" placeholder="预估结束时间" readonly="readonly" autocomplete="off" datatype="*" nullmsg="请选择预估结束时间">
                                     </div>
                                     <small class="Validform_checktip am-text-danger" id="date-alert"></small>
                                 </div>
@@ -140,6 +140,14 @@
                 }
             },
             showAllError: true,
+            ajaxPost:true,
+            callback:function (data) {
+                if(data.code == 200) {
+                    location.href = data.id;
+                }else{
+                    alert(data.msg);
+                }
+            }
         });
     });
 </script>

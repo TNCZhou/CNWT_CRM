@@ -23,7 +23,7 @@
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-inline">
                             <select id="progress" data-am-selected="{btnWidth: '100%',btnSize: 'sm',placeholder: '请选择项目状态'}">
-                                <option value="">所有状态</option>
+                                <option value="0">所有状态</option>
                                 <?php foreach($progress as $k=>$v):?>
                                 <option value="<?=$k?>" <?php if($k==$params['progress']):?>selected<?php endif?>><?=$v?></option>
                                 <?php endforeach;?>

@@ -53,9 +53,9 @@
                         </div>
 						<div class="portlet-input input-inline" style="float: right;">
                             <div class="am-input-group am-input-group-sm">
-                                <input name="keyword" value="<?=$keyword?>" type="text" class="am-form-field" autocomplete="off" placeholder="请输入名字进行搜索">
+                                <input name="keyword" value="<?=$personKeyword?>" type="text" class="am-form-field" autocomplete="off" placeholder="请输入名字进行搜索">
                                 <span class="am-input-group-btn">
-            <button class="am-btn  am-btn-default am-btn-primary am-icon-search" type="button" onclick="location.href='<?= \yii\helpers\Url::to(['customer/index']) ?>&type='+$('#project-select').val()+'&keyword='+$('input[name=keyword]').val()"></button>
+            <button class="am-btn  am-btn-default am-btn-primary am-icon-search" type="button" onclick="location.href='<?= \yii\helpers\Url::to(['customer/detail','id'=>$customer->id]) ?>&person_key='+$('input[name=keyword]').val()"></button>
           </span>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($customer->persons as $k=>$v):?>
+                            <?php foreach ($personList as $k=>$v):?>
                             <tr>
                                 <td><?=$v->name?></td>
                                 <td><?=$v->department?></td>
@@ -124,7 +124,9 @@
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
+                                            <?php if($v->user->id == \Yii::$app->user->id):?>
                                             <a other-id="<?=$v->id?>" class="am-btn am-btn-default am-btn-xs delete-other"><span class="am-icon-file-text-o"></span> 隐藏</a>
+                                            <?php endif;?>
                                         </div>
                                     </div>
                                 </td>

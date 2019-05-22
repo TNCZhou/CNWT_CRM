@@ -23,6 +23,7 @@
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-inline">
                             <select id="project-select" data-am-selected="{btnWidth: '100%',btnSize: 'sm',placeholder: '请选择类型'}">
+                                <option value="0">全部</option>
                                 <?php foreach($customerType as $k=>$v):?>
                                 <option value="<?=$k?>"><?=$v?></option>
                                 <?php endforeach;?>
