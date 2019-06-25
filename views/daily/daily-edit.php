@@ -1,4 +1,11 @@
 
+<style>
+.part { position: relative;}
+.part:last-child:before { content: ''; display: block; width: 15px; height: 100%; position: absolute; right: -15px; top: 0; border: 1px solid #eee; border-left: none; z-index: 1;}
+.part:last-child .del-btn { display: block; position: absolute; right: -26px; top: 50%; z-index: 2; font-size: 30px; line-height: 1; margin-top: -15px; background-color: #fff; color: #dd514c;}
+.part:last-child .del-btn:before { content: "\f014"; font-family: "FontAwesome"; display: inline-block;}
+.part:first-child:before, .part:first-child .del-btn { display: none;}
+</style>
         <div class="tpl-content-wrapper">
             <div class="tpl-content-page-title">
                 填写工作日志
@@ -33,6 +40,7 @@
                                 <div id="item-wrap">
                                     <?php if($task->records): ?>
                                     <?php foreach(array_values($task->records) as $k=>$v): ?>
+                                        <div class="part">
                                     <input type="hidden" name="records[<?=$k?>][id]" value="<?=$v['id']?>" />
                                     <div class="am-form-group">
                                         <label class="am-u-sm-3 am-form-label">工作结果</label>
@@ -68,6 +76,8 @@
                                             <small class="Validform_checktip"></small>
                                         </div>
                                     </div>
+                                            <a href="javascript:void(0);" class="del-btn"></a>
+                                        </div>
                                     <?php endforeach;?>
                                     <?php endif;?>
                                 </div>
@@ -97,42 +107,43 @@
 
         </div>
         <div id="progress-more" style="display: none;">
-
-            <div class="am-form-group">
-                <label class="am-u-sm-3 am-form-label">工作结果</label>
-                <div class="am-u-sm-9">
-                    <select class="am-form-field am-radius" name="records[{{id}}][result]" datatype="*" nullmsg="请选择工作结果" errormsg="请选择工作结果">
-                        <option value="">请选择工作结果</option>
-                        <?php foreach($results as $k=>$v):?>
-                        <option value="<?=$k?>"><?=$v?></option>
-                        <?php endforeach;?>
-                    </select>
-                    <small class="Validform_checktip"></small>
-                </div>
-            </div>
-
-            <div class="am-form-group">
-                <label class="am-u-sm-3 am-form-label">时间段</label>
-                <div class="am-u-sm-9 am-g-collapse">
-                    <div class="am-u-sm-5">
-                        <input type="text" name="records[{{id}}][start_time]" class="am-form-field am-radius" id="start-date{{id}}" placeholder="预估开始时间" readonly="readonly" autocomplete="off">
+			<div class="part">
+                <div class="am-form-group">
+                    <label class="am-u-sm-3 am-form-label">工作结果</label>
+                    <div class="am-u-sm-9">
+                        <select class="am-form-field am-radius" name="records[{{id}}][result]" datatype="*" nullmsg="请选择工作结果" errormsg="请选择工作结果">
+                            <option value="">请选择工作结果</option>
+                            <?php foreach($results as $k=>$v):?>
+                            <option value="<?=$k?>"><?=$v?></option>
+                            <?php endforeach;?>
+                        </select>
+                        <small class="Validform_checktip"></small>
                     </div>
-                    <div class="am-u-sm-2 am-text-center am-text-sm am-padding-top-xs">至</div>
-                    <div class="am-u-sm-5">
-                        <input type="text" name="records[{{id}}][end_time]" class="am-form-field am-radius" id="end-date{{id}}" placeholder="预估结束时间" readonly="readonly" autocomplete="off">
+                </div>
+
+                <div class="am-form-group">
+                    <label class="am-u-sm-3 am-form-label">时间段</label>
+                    <div class="am-u-sm-9 am-g-collapse">
+                        <div class="am-u-sm-5">
+                            <input type="text" name="records[{{id}}][start_time]" class="am-form-field am-radius" id="start-date{{id}}" placeholder="预估开始时间" readonly="readonly" autocomplete="off">
+                        </div>
+                        <div class="am-u-sm-2 am-text-center am-text-sm am-padding-top-xs">至</div>
+                        <div class="am-u-sm-5">
+                            <input type="text" name="records[{{id}}][end_time]" class="am-form-field am-radius" id="end-date{{id}}" placeholder="预估结束时间" readonly="readonly" autocomplete="off">
+                        </div>
+                        <small class="Validform_checktip am-text-danger" id="date-alert{{id}}"></small>
                     </div>
-                    <small class="Validform_checktip am-text-danger" id="date-alert{{id}}"></small>
                 </div>
-            </div>
 
-            <div class="am-form-group">
-                <label class="am-u-sm-3 am-form-label">情况说明</label>
-                <div class="am-u-sm-9">
-                    <textarea class="am-form-field am-radius" name="records[{{id}}][remark]" placeholder="情况说明" autocomplete="off" rows="5"></textarea>
-                    <small class="Validform_checktip"></small>
+                <div class="am-form-group">
+                    <label class="am-u-sm-3 am-form-label">情况说明</label>
+                    <div class="am-u-sm-9">
+                        <textarea class="am-form-field am-radius" name="records[{{id}}][remark]" placeholder="情况说明" autocomplete="off" rows="5"></textarea>
+                        <small class="Validform_checktip"></small>
+                    </div>
                 </div>
-            </div>
-
+                <a href="javascript:void(0);" class="del-btn"></a>
+			</div>
         </div>
         <!--datetimepicker-->
         <link rel="stylesheet" href="assets/datetimepicker/css/amazeui.datetimepicker.css" />
@@ -190,5 +201,10 @@
                     },
 //                showAllError: true,
                 });
+
+                $('body').on('click','.del-btn',function(){
+                    $(this).parent('.part').remove();
+                    i--;
+                })
             });
         </script>

@@ -25,7 +25,7 @@ echo $this->render('../header',[
         <div class="mui-input-row has-units">
             <label>预估案值</label>
             <input type="number" name="plan_price" autocomplete="off" placeholder="请填写预估案值" value="" datatype="*" nullmsg="请填写预估案值" />
-            <span class="mui-input-units">元</span>
+            <span class="mui-input-units">万元</span>
         </div>
         <div class="mui-input-row">
             <label>预估周期</label>

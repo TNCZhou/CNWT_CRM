@@ -129,7 +129,7 @@
                         <label class="am-u-sm-3 am-form-label">实际产值</label>
                         <div class="am-u-sm-9">
                             <div class="am-input-group">
-                                <input name="real_price" value="<?=$project->real_price?>" type="number" class="am-form-field" placeholder="预估案值" autocomplete="off" datatype="n" nullmsg="请输入预估案值" errormsg="仅限数字">
+                                <input name="real_price" value="<?=$project->real_price?>" type="number" class="am-form-field" placeholder="实际产值" autocomplete="off" datatype="*" nullmsg="请输入实际产值" errormsg="请输入实际产值">
                                 <span class="am-input-group-label">元</span>
                             </div>
                         </div>

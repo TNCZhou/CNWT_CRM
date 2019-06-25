@@ -32,10 +32,11 @@
                 <div class="portlet-input input-inline">
                     <input name="content" value="<?= $params['content'] ?>" type="text" class="am-form-field"
                            placeholder="请输入工作任务进行搜索">
-                    <!--                            <select id="project-select" data-am-selected="{btnWidth: '100%',btnSize: 'sm',placeholder: '请选择类型'}">-->
-                    <!--                                <option value="option1">政务</option>-->
-                    <!--                                <option value="option2">企业</option>-->
-                    <!--                            </select>-->
+                                                <select id="project-select" data-am-selected="{btnWidth: '100%',btnSize: 'sm',placeholder: '请选择工作完成情况'}">
+                                                    <option value="option1">完成</option>
+                                                   <option value="option2">延后</option>
+												   <option value="option3">取消</option>
+                                               </select>
                 </div>
             </div>
             <?php endif;?>
@@ -73,7 +74,7 @@
                                             <div class="am-btn-group am-btn-group-xs">
                                                 <a href="<?=\yii\helpers\Url::to(['daily/detail','id'=>$v['id']])?>" class="am-btn am-btn-default am-btn-xs am-text-primary"><span
                                                             class="am-icon-file-text-o"></span> 详情</a>
-                                                <!--<a class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 修改</a>-->
+                                                <a class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
                                             </div>
                                         </div>
                                     </td>

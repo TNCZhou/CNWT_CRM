@@ -48,7 +48,7 @@ echo $this->render('../header',[
         <tbody>
         <?php foreach ($customer->persons as $k=>$v):?>
         <tr>
-            <td><a href="<?=\yii\helpers\Url::to(['customer/person-detail','id' => $v->id])?>" class="href-a"><?=$v->name?></a></td>
+            <td nowrap="nowrap"><a href="<?=\yii\helpers\Url::to(['customer/person-detail','id' => $v->id])?>" class="href-a"><?=$v->name?></a></td>
             <td><?=$v->department?></td>
             <td><?=$v->position?></td>
         </tr>
@@ -66,14 +66,14 @@ echo $this->render('../header',[
         <thead>
         <tr>
             <th class="">部门信息</th>
-            <th class="">录入人</th>
+            <th class="" nowrap="nowrap">录入人</th>
         </tr>
         </thead>
         <tbody>
         <?php foreach ($customer->others as $k=>$v):?>
         <tr>
             <td><?=$v->content?></td>
-            <td><?=$v->user->realname?></td>
+            <td nowrap="nowrap"><?=$v->user->realname?></td>
         </tr>
         <?php endforeach;?>
         </tbody>
@@ -105,12 +105,12 @@ echo $this->render('../header',[
 <div class="mui-popover mui-popover-action mui-popover-middle" id="add-department">
     <form method="post" class="validform" action="<?=\yii\helpers\Url::to(['customer/other-add'])?>">
         <div class="popover-dialog">
-            <div class="popover-hd">新增部门</div>
+            <div class="popover-hd">新增部门信息</div>
             <input type="hidden" name="id" value="<?=$customer->id?>" />
             <div class="mui-input-group input-group">
                 <div class="mui-input-row">
-                    <label>部门名称</label>
-                    <input type="text" name="content" placeholder="请填写部门名称" value="" datatype="*" nullmsg="请填写部门名称" />
+                    <label>部门信息</label>
+                    <input type="text" name="content" placeholder="请填写部门信息" value="" datatype="*" nullmsg="请填写部门信息" />
                 </div>
             </div>
             <div class="mui-popup-buttons">

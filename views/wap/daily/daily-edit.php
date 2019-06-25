@@ -25,8 +25,8 @@ echo $this->render('../header',[
     <div id="item-wrap">
         <?php if($task->records): ?>
             <?php foreach(array_values($task->records) as $k=>$v): ?>
-                <input type="hidden" name="records[<?=$k?>][id]" value="<?=$v['id']?>" />
                 <div class="mui-input-group input-group margin-vertical-sm">
+                    <input type="hidden" name="records[<?=$k?>][id]" value="<?=$v['id']?>" />
                     <div class="mui-input-row has-units">
                         <label>工作结果</label>
                         <div class="readonly-input select select-result"><?=$results[$v['result']]?></div>
@@ -46,6 +46,9 @@ echo $this->render('../header',[
                     <div class="mui-input-row">
                         <label>情况说明</label>
                         <textarea class="" rows="4" name="records[<?=$k?>][remark]" placeholder="情况说明"><?=$v['remark']?></textarea>
+                    </div>
+                    <div class="mui-input-row padding-vertical-sm padding-horizontal mui-text-right del-btn-wrap">
+                        <a class="del-btn"><span class="mui-icon mui-icon-trash mui-text-danger"></span></a>
                     </div>
                 </div>
             <?php endforeach;?>
@@ -81,6 +84,9 @@ echo $this->render('../header',[
         <div class="mui-input-row">
             <label>情况说明</label>
             <textarea class="" rows="4" name="records[{{id}}][remark]" placeholder="情况说明"></textarea>
+        </div>
+        <div class="mui-input-row padding-vertical-sm padding-horizontal mui-text-right del-btn-wrap">
+            <a class="del-btn"><span class="mui-icon mui-icon-trash mui-text-danger"></span></a>
         </div>
     </div>
 </div>
@@ -162,6 +168,11 @@ echo $this->render('../header',[
 
         $(".validform").Validform({
             tiptype:'wap',
+        });
+
+        mui('body').on('tap','.del-btn',function(){
+            $(this).parents('.mui-input-group').remove();
+            i--;
         });
     })
 </script>

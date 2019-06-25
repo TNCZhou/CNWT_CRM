@@ -48,8 +48,8 @@
                                 <label class="am-u-sm-3 am-form-label">预估案值</label>
                                 <div class="am-u-sm-9">
                                     <div class="am-input-group">
-                                        <input name="plan_price" type="number" class="am-form-field" placeholder="预估案值" autocomplete="off" datatype="n" nullmsg="请填写预估案值" errormsg="请填写预估案值">
-                                        <span class="am-input-group-label">元</span>
+                                        <input name="plan_price" type="tel" class="am-form-field" placeholder="预估案值" autocomplete="off" datatype="*" nullmsg="请填写预估案值" errormsg="请填写预估案值">
+                                        <span class="am-input-group-label">万元</span>
                                     </div>
                                     <small class="Validform_checktip"></small>
                                 </div>

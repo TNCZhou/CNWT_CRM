@@ -11,9 +11,9 @@
                         <li <?php if($params['type'] == 'participate'):?>class="am-active"<?php endif?>><a href="<?=\yii\helpers\Url::to(['project/index','type' => 'participate', 'progress' => $params['progress'], 'keyword' => $params['keyword']])?>"><span>我参与的 (<?=$myJoin?>)</span></a></li>
                     </ul>
                     <div class="tpl-portlet-input tpl-fz-ml">
-                        <div class="portlet-input input-inline">
+                        <div class="portlet-input input-inline" style="width:300px;">
                             <div class="am-input-group am-input-group-sm">
-                                <input id="keyword" value="<?=$params['keyword']?>" type="text" class="am-form-field" placeholder="请输入项目名称/客户名称名进行搜索">
+                                <input id="keyword" value="<?=$params['keyword']?>" type="text" class="am-form-field" placeholder="请输入项目名称/客户名称进行搜索">
                                 <span class="am-input-group-btn">
             <button onclick="location.href='<?=\yii\helpers\Url::to(['project/index', 'type' => $params['type']])?>&keyword='+$('#keyword').val()+'&progress='+$('#progress').val()" class="am-btn am-btn-default am-btn-primary am-icon-search" type="button"></button>
           </span>

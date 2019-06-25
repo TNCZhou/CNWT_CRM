@@ -33,11 +33,11 @@
         <div class="mui-input-group input-group ">
             <div class="mui-input-row">
                 <label>用&ensp;户&ensp;名</label>
-                <input name="username" type="text" class="" placeholder="用户名" autocomplete="off" datatype="*" nullmsg="请输入用户名" errormsg="请输入用户名" />
+                <input name="username" type="text" class="" value="<?php echo \Yii::$app->user->identity->realname ?>" placeholder="用户名" readonly="readonly" autocomplete="off" datatype="*" nullmsg="请输入用户名" errormsg="请输入用户名" />
             </div>
             <div class="mui-input-row">
                 <label>旧&ensp;密&ensp;码</label>
-                <input name="password" type="password" class="" placeholder="旧的密码" autocomplete="off" datatype="*" nullmsg="请输入旧的密码" errormsg="请输入旧的密码" />
+                <input name="password" type="password" class="" placeholder="旧的密码" readonly="readonly" autocomplete="off" datatype="*" nullmsg="请输入旧的密码" errormsg="请输入旧的密码" />
             </div>
             <div class="mui-input-row">
                 <label>新&ensp;密&ensp;码</label>
@@ -45,7 +45,7 @@
             </div>
             <div class="mui-input-row">
                 <label>确认密码</label>
-                <input type="password" class="" name="password2" placeholder="再次输入新的密码" autocomplete="off" datatype="*" recheck="password" nullmsg="请再输入一次密码！" errormsg="您两次输入的密码不一致！">
+                <input type="password" class="" name="password2" placeholder="再次输入新的密码" autocomplete="off" datatype="*" recheck="newPassword" nullmsg="请再输入一次密码！" errormsg="您两次输入的密码不一致！">
             </div>
         </div>
         <div class="padding">

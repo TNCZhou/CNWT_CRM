@@ -16,19 +16,20 @@ echo $this->render('../header',[
 <?php
 echo $this->render('../menu');
 ?>
-<ul class="mui-row bg-white filter-wrap mui-avg-xs-3">
+<ul class="mui-row bg-white filter-wrap mui-avg-xs-4">
     <li><a href="<?= \yii\helpers\Url::to(['daily/index', 'department' => '']) ?>" class="mui-btn mui-block href-a <?php if (!$params['department']): ?>active<?php endif; ?>">我的日志</a></li>
     <?php foreach ($departmentList as $k => $v): ?>
         <li><a href="<?= \yii\helpers\Url::to(['daily/index', 'department' => $k]) ?>" class="mui-btn mui-block href-a <?php if ($params['department'] == $k): ?>active<?php endif; ?>"><?= $v ?>日志</a></li>
     <?php endforeach; ?>
-<!--    <li><a href="#filter-type" id="filter-type-btn" class="mui-btn mui-block"><span class="mui-icon mui-icon-extra mui-icon-extra-filter"></span> 筛选</a></li>-->
+    <li><a href="#filter-type" id="filter-type-btn" class="mui-btn mui-block"><span class="mui-icon mui-icon-extra mui-icon-extra-filter"></span> 筛选</a></li>
 </ul>
 <div id="filter-type" class="mui-popover filter-popover">
     <div class="mui-row">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell"><a class="href-a active" href="#">全部</a></li>
-            <li class="mui-table-view-cell"><a class="href-a" href="#">政务</a></li>
-            <li class="mui-table-view-cell"><a class="href-a" href="#">企业</a></li>
+            <li class="mui-table-view-cell"><a class="href-a" href="#">完成</a></li>
+            <li class="mui-table-view-cell"><a class="href-a" href="#">延后</a></li>
+			<li class="mui-table-view-cell"><a class="href-a" href="#">取消</a></li>
         </ul>
     </div>
 </div>
@@ -46,7 +47,7 @@ echo $this->render('../menu');
                         <?php foreach ($v['records'] as $rk => $rv): ?>
                         <li class="mui-table-view-cell">
                             <div class="time"><?= ($rv['start_time'] ? date('Y-m-d H:i', $rv['start_time']) : '') . '-' . ($rv['end_time'] ? date('Y-m-d H:i', $rv['end_time']) : '') ?></div>
-                            <div class=""><?=$rv->resultText?></div>
+                            <div class=""><?=$rv->resultText?></div><!--mui-text-danger取消 mui-text-success完成 mui-text-warning延后-->
                         </li>
                         <?php endforeach; ?>
                     </ul>
