@@ -33,11 +33,11 @@
         <div class="mui-input-group input-group ">
             <div class="mui-input-row">
                 <label>用&ensp;户&ensp;名</label>
-                <input name="username" type="text" class="" value="<?php echo \Yii::$app->user->identity->realname ?>" placeholder="用户名" readonly="readonly" autocomplete="off" datatype="*" nullmsg="请输入用户名" errormsg="请输入用户名" />
+                <input name="username" type="text" class="" value="<?php echo \Yii::$app->user->identity->username ?>" placeholder="用户名" <?=\Yii::$app->user->identity->username?'readonly':''?>" autocomplete="off" datatype="*" nullmsg="请输入用户名" errormsg="请输入用户名" />
             </div>
             <div class="mui-input-row">
                 <label>旧&ensp;密&ensp;码</label>
-                <input name="password" type="password" class="" placeholder="旧的密码" readonly="readonly" autocomplete="off" datatype="*" nullmsg="请输入旧的密码" errormsg="请输入旧的密码" />
+                <input name="password" type="password" class="" placeholder="旧的密码" autocomplete="off" datatype="*" nullmsg="请输入旧的密码" errormsg="请输入旧的密码" />
             </div>
             <div class="mui-input-row">
                 <label>新&ensp;密&ensp;码</label>

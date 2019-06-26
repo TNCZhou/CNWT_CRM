@@ -18,9 +18,11 @@ echo $this->render('../header',[
             <span class="mui-input-units mui-icon mui-icon-arrowdown"></span>
             <input type="hidden" name="customer_id" value="" datatype="*" nullmsg="请选择客户" />
         </div>
-        <div class="mui-input-row">
+        <div class="mui-input-row has-units">
             <label>对接人</label>
-            <input type="text" name="customer_incharge" autocomplete="off" placeholder="请填写对接人" value="" datatype="*" nullmsg="请填写对接人" />
+            <div class="readonly-input select" id="abutment">请选择对接人</div>
+            <span class="mui-input-units mui-icon mui-icon-arrowdown"></span>
+            <input type="hidden" name="customer_incharge" value="" datatype="*" nullmsg="请选择对接人" />
         </div>
         <div class="mui-input-row has-units">
             <label>预估案值</label>
@@ -96,6 +98,7 @@ echo $this->render('../header',[
         });
 
         var picker = new mui.PopPicker();
+        var abutPicker = new mui.PopPicker();
         <?php $ccc=[];?>
         <?php foreach ($customerList as $k=>$v):?>
         <?php $ccc[] = [
@@ -109,7 +112,28 @@ echo $this->render('../header',[
             picker.show(function(res) {
                 _this.html(res[0].text).addClass('fc_black');
                 $('input[name=customer_id]').val(res[0].value);
+                $.ajax({
+                    url: '<?=\yii\helpers\Url::to(['project/customer-person-list'])?>&customer_id='+res[0].value,
+                    dataType:'json',
+                    success:function (data) {
+                        if(data.code == 200) {
+                            abutPicker.setData(data.data.list);
+                        }
+                    }
+                })
             })
+        });
+
+        mui('body').on('tap','#abutment',function() {
+            var _this = $(this);
+            if($('input[name=customer_id]').val()==''){
+                mui.toast('请先选择客户');
+            }else{
+                abutPicker.show(function(res) {
+                    _this.html(res[0].text).addClass('fc_black');
+                    $('input[name=customer_incharge]').val(res[0].value);
+                })
+            }
         });
 
         $(".validform").Validform({
@@ -117,7 +141,7 @@ echo $this->render('../header',[
             ajaxPost:true,
             callback:function (data) {
                 if(data.code == 200) {
-                    location.href = data.id;
+                    location.href = '<?=\yii\helpers\Url::to(['project/detail','id' => ''])?>' + data.id;
                 }else{
                     alert(data.msg);
                 }

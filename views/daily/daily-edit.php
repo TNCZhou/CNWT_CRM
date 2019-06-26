@@ -41,11 +41,11 @@
                                     <?php if($task->records): ?>
                                     <?php foreach(array_values($task->records) as $k=>$v): ?>
                                         <div class="part">
-                                    <input type="hidden" name="records[<?=$k?>][id]" value="<?=$v['id']?>" />
+                                    <input type="hidden" name="oldRecords[<?=$v['id']?>][id]" value="<?=$v['id']?>" />
                                     <div class="am-form-group">
                                         <label class="am-u-sm-3 am-form-label">工作结果</label>
                                         <div class="am-u-sm-9">
-                                            <select class="am-form-field am-radius" name="records[<?=$k?>][result]" datatype="*" nullmsg="请选择工作结果" errormsg="请选择工作结果">
+                                            <select class="am-form-field am-radius" name="oldRecords[<?=$v['id']?>][result]" datatype="*" nullmsg="请选择工作结果" errormsg="请选择工作结果">
                                                 <option value="">请选择工作结果</option>
                                                 <?php foreach($results as $rk=>$rv):?>
                                                     <option value="<?=$rk?>" <?php if($rk==$v['result']):?>selected<?php endif;?>><?=$rv?></option>
@@ -59,11 +59,11 @@
                                         <label class="am-u-sm-3 am-form-label">时间段</label>
                                         <div class="am-u-sm-9 am-g-collapse">
                                             <div class="am-u-sm-5">
-                                                <input type="text" name="records[<?=$k?>][start_time]" class="am-form-field am-radius" id="start-date<?=$k?>" placeholder="预估开始时间" readonly="readonly" autocomplete="off" value="<?=date('Y-m-d H:i',$v['start_time'])?>">
+                                                <input type="text" name="oldRecords[<?=$v['id']?>][start_time]" class="am-form-field am-radius" id="start-date<?=$k?>" placeholder="预估开始时间" readonly="readonly" autocomplete="off" value="<?=date('Y-m-d H:i',$v['start_time'])?>">
                                             </div>
                                             <div class="am-u-sm-2 am-text-center am-text-sm am-padding-top-xs">至</div>
                                             <div class="am-u-sm-5">
-                                                <input type="text" name="records[<?=$k?>][end_time]" class="am-form-field am-radius" id="end-date<?=$k?>" placeholder="预估结束时间" readonly="readonly" autocomplete="off" value="<?=date('Y-m-d H:i',$v['end_time'])?>">
+                                                <input type="text" name="oldRecords[<?=$v['id']?>][end_time]" class="am-form-field am-radius" id="end-date<?=$k?>" placeholder="预估结束时间" readonly="readonly" autocomplete="off" value="<?=date('Y-m-d H:i',$v['end_time'])?>">
                                             </div>
                                             <small class="Validform_checktip am-text-danger" id="date-alert<?=$k?>"></small>
                                         </div>
@@ -72,7 +72,7 @@
                                     <div class="am-form-group">
                                         <label class="am-u-sm-3 am-form-label">情况说明</label>
                                         <div class="am-u-sm-9">
-                                            <textarea class="am-form-field am-radius" name="records[<?=$k?>][remark]" placeholder="情况说明" autocomplete="off" rows="5"><?=$v['remark']?></textarea>
+                                            <textarea class="am-form-field am-radius" name="oldRecords[<?=$v['id']?>][remark]" placeholder="情况说明" autocomplete="off" rows="5"><?=$v['remark']?></textarea>
                                             <small class="Validform_checktip"></small>
                                         </div>
                                     </div>

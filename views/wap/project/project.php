@@ -8,8 +8,8 @@ echo $this->render('../header',[
 <header class="mui-bar mui-bar-nav">
     <form class="search-form" name="search_form" method="post" action="">
         <span class="search-icon"></span>
-        <input class="search-input" name="q" id="q" placeholder="请输入项目名称/客户名称名进行搜索" type="search" value="" />
-        <button type="submit" class="search-btn">搜索</button>
+        <input class="search-input" name="keyword" id="keyword" placeholder="请输入项目名称/客户名称名进行搜索" type="search" value="<?=$params['keyword']?>" />
+        <button type="button" onclick="location.href='<?=\yii\helpers\Url::to(['project/index', 'type' => $params['type']])?>&keyword='+$('#keyword').val()+'&progress='+$('#progress').val()" class="search-btn">搜索</button>
     </form>
 </header>
 <?php echo $this->render('../menu');?>

@@ -26,12 +26,12 @@ echo $this->render('../header',[
         <?php if($task->records): ?>
             <?php foreach(array_values($task->records) as $k=>$v): ?>
                 <div class="mui-input-group input-group margin-vertical-sm">
-                    <input type="hidden" name="records[<?=$k?>][id]" value="<?=$v['id']?>" />
+                    <input type="hidden" name="oldRecords[<?=$v['id']?>][id]" value="<?=$v['id']?>" />
                     <div class="mui-input-row has-units">
                         <label>工作结果</label>
                         <div class="readonly-input select select-result"><?=$results[$v['result']]?></div>
                         <span class="mui-input-units mui-icon mui-icon-arrowdown"></span>
-                        <input type="hidden" name="records[<?=$k?>][result]" value="<?=$v['result']?>" datatype="*" nullmsg="请选择工作结果" />
+                        <input type="hidden" name="oldRecords[<?=$v['id']?>][result]" value="<?=$v['result']?>" datatype="*" nullmsg="请选择工作结果" />
                     </div>
                     <div class="mui-input-row">
                         <label>时间段</label>
@@ -39,13 +39,13 @@ echo $this->render('../header',[
                             <a class="date" id="start-date<?=$k?>"><?=date('Y-m-d H:i',$v['start_time'])?></a>
                             <span>至</span>
                             <a class="date mui-text-right" id="end-date<?=$k?>"><?=date('Y-m-d H:i',$v['end_time'])?></a>
-                            <input type="hidden" name="records[<?=$k?>][start_time]" value="<?=date('Y-m-d H:i',$v['start_time'])?>" datatype="*" nullmsg="请选择预估开始时间" />
-                            <input type="hidden" name="records[<?=$k?>][end_time]" value="<?=date('Y-m-d H:i',$v['end_time'])?>" datatype="*" nullmsg="请选择预估结束时间" />
+                            <input type="hidden" name="oldRecords[<?=$v['id']?>][start_time]" value="<?=date('Y-m-d H:i',$v['start_time'])?>" datatype="*" nullmsg="请选择预估开始时间" />
+                            <input type="hidden" name="oldRecords[<?=$v['id']?>][end_time]" value="<?=date('Y-m-d H:i',$v['end_time'])?>" datatype="*" nullmsg="请选择预估结束时间" />
                         </div>
                     </div>
                     <div class="mui-input-row">
                         <label>情况说明</label>
-                        <textarea class="" rows="4" name="records[<?=$k?>][remark]" placeholder="情况说明"><?=$v['remark']?></textarea>
+                        <textarea class="" rows="4" name="oldRecords[<?=$v['id']?>][remark]" placeholder="情况说明"><?=$v['remark']?></textarea>
                     </div>
                     <div class="mui-input-row padding-vertical-sm padding-horizontal mui-text-right del-btn-wrap">
                         <a class="del-btn"><span class="mui-icon mui-icon-trash mui-text-danger"></span></a>

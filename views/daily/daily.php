@@ -74,7 +74,7 @@
                                             <div class="am-btn-group am-btn-group-xs">
                                                 <a href="<?=\yii\helpers\Url::to(['daily/detail','id'=>$v['id']])?>" class="am-btn am-btn-default am-btn-xs am-text-primary"><span
                                                             class="am-icon-file-text-o"></span> 详情</a>
-                                                <a class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
+                                                <a id="<?=$v['id']?>" class="delete-task am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
                                             </div>
                                         </div>
                                     </td>
@@ -95,6 +95,20 @@
         </div>
         <div class="tpl-alert"></div>
     </div>
-
+<script>
+    $('.delete-task').click(function(){
+        var id = $(this).attr('id');
+        $.ajax({
+            url:'<?=\yii\helpers\Url::to(['daily/delete','id'=>''])?>' + id,
+            dataType:'json',
+            success:function(data) {
+                alert(data.msg);
+                if(data.code == 200) {
+                    location.reload()
+                }
+            }
+        })
+    })
+</script>
 
 </div>

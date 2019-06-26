@@ -143,7 +143,7 @@
             ajaxPost:true,
             callback:function (data) {
                 if(data.code == 200) {
-                    location.href = data.id;
+                    location.href = '<?=\yii\helpers\Url::to(['project/detail','id' => ''])?>' + data.id;
                 }else{
                     alert(data.msg);
                 }

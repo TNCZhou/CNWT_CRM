@@ -37,22 +37,22 @@ class Customer extends \yii\db\ActiveRecord
 
     public function getOthers()
     {
-        return $this->hasMany(CustomerOther::className(),['customer_id' => 'id']);
+        return $this->hasMany(CustomerOther::className(), ['customer_id' => 'id']);
     }
 
     public function getPersons()
     {
-        return $this->hasMany(CustomerPerson::className(),['customer_id' => 'id']);
+        return $this->hasMany(CustomerPerson::className(), ['customer_id' => 'id']);
     }
 
     public function getProjectCount($type = 0)
     {
-        $query = $this->hasMany(Project::className(),['customer_id' => 'id']);
-        if($type == 1) {
-            $query->where(['in', 'progress', [1,2,3,4,5,6,7,10,11]]);
-        } elseif($type == 2) {
-            $query->where(['progress' => 8]);
-        } elseif($type == 3) {
+        $query = $this->hasMany(Project::className(), ['customer_id' => 'id']);
+        if ($type == 1) {
+            $query->where(['in', 'progress', [1, 2, 3, 4, 5, 6, 7, 10]]);
+        } elseif ($type == 2) {
+            $query->where(['in', 'progress', [8, 11]]);
+        } elseif ($type == 3) {
             $query->where(['progress' => 9]);
         }
         return $query->count();

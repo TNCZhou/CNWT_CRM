@@ -18,6 +18,7 @@ class TaskForm extends Model
     public $result;
     public $type;
     public $records;
+    public $oldRecords;
 
     public function rules()
     {
@@ -35,39 +36,62 @@ class TaskForm extends Model
                 'code' => 1,
                 'msg' => $this->getErrorSummary(true)
             ];
-        if ($this->id)
+        if ($this->id) {
             $task = Task::findOne([
                 'id' => $this->id,
                 'user_id' => $this->user_id
             ]);
-        else
+            if ($task) {
+                $recordList = TaskRecord::find()->where([
+                    'task_id' => $task->id
+                ])->all();
+                foreach ($recordList as $oldRecord) {
+                    if (!$this->oldRecords[$oldRecord->id]) {
+                        $oldRecord->delete();
+                    }
+                }
+            }
+        } else {
             $task = new Task();
+        }
         $task->content = $this->content;
         $task->type = $this->type;
         $task->user_id = $this->user_id;
-        if($task->isNewRecord)
+        if ($task->isNewRecord)
             $task->created_at = time();
-        if($task->save()) {
+        $task->updated_at = time();
+        if ($task->save()) {
             $this->id = $task->id;
-            foreach ($this->records as $record) {
-                if($record['id']) {
-                    $r = TaskRecord::findOne([
-                        'task_id' => $this->id,
-                        'user_id' => $this->user_id,
-                        'id' => $record['id']
-                    ]);
-                } else {
+            if ($this->oldRecords) {
+                foreach ($this->oldRecords as $record) {
+                    if ($record['id']) {
+                        $r = TaskRecord::findOne([
+                            'task_id' => $this->id,
+                            'user_id' => $this->user_id,
+                            'id' => $record['id']
+                        ]);
+                        $r->start_time = strtotime($record['start_time']);
+                        $r->end_time = strtotime($record['end_time']);
+                        $r->result = $record['result'];
+                        $r->remark = $record['remark'];
+                        if ($r->save())
+                            $task->result = $r->result;
+                    }
+                }
+            }
+            if ($this->records) {
+                foreach ($this->records as $record) {
                     $r = new TaskRecord();
                     $r->task_id = $this->id;
                     $r->user_id = $this->user_id;
                     $r->created_at = time();
+                    $r->start_time = strtotime($record['start_time']);
+                    $r->end_time = strtotime($record['end_time']);
+                    $r->result = $record['result'];
+                    $r->remark = $record['remark'];
+                    if ($r->save())
+                        $task->result = $r->result;
                 }
-                $r->start_time = strtotime($record['start_time']);
-                $r->end_time = strtotime($record['end_time']);
-                $r->result = $record['result'];
-                $r->remark = $record['remark'];
-                if($r->save())
-                    $task->result = $r->result;
             }
             $task->save();
             return [

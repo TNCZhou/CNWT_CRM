@@ -10,7 +10,7 @@ echo $this->render('../header',[
     <form class="search-form" name="search_form" method="post" action="">
         <span class="search-icon"></span>
         <input class="search-input" name="username" id="q" placeholder="请输入员工姓名进行搜索" type="search" value="<?= $params['username'] ?>" />
-        <button type="button" onclick="location.href='<?= \yii\helpers\Url::to(['daily/index', 'department' => $params['department']]) ?>&username='+$('input[name=username]').val()+'&content='+$('input[name=content]').val()" class="search-btn">搜索</button>
+        <button type="button" onclick="location.href='<?= \yii\helpers\Url::to(['daily/index', 'department' => $params['department']]) ?>&username='+$('input[name=username]').val()" class="search-btn">搜索</button>
     </form>
 </header>
 <?php
@@ -26,10 +26,10 @@ echo $this->render('../menu');
 <div id="filter-type" class="mui-popover filter-popover">
     <div class="mui-row">
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell"><a class="href-a active" href="#">全部</a></li>
-            <li class="mui-table-view-cell"><a class="href-a" href="#">完成</a></li>
-            <li class="mui-table-view-cell"><a class="href-a" href="#">延后</a></li>
-			<li class="mui-table-view-cell"><a class="href-a" href="#">取消</a></li>
+            <li class="mui-table-view-cell"><a class="href-a <?=$params['result'] ? '':'active'?>" href="<?= \yii\helpers\Url::to(array_merge(['daily/index'],$params,['result'=>''])) ?>">全部</a></li>
+            <li class="mui-table-view-cell"><a class="href-a <?=$params['result'] ==1 ? 'active':''?>" href="<?= \yii\helpers\Url::to(array_merge(['daily/index'],$params,['result'=>1])) ?>">完成</a></li>
+            <li class="mui-table-view-cell"><a class="href-a <?=$params['result'] ==3 ? 'active':''?>" href="<?= \yii\helpers\Url::to(array_merge(['daily/index'],$params,['result'=>3])) ?>">延后</a></li>
+			<li class="mui-table-view-cell"><a class="href-a <?=$params['result'] ==2 ? 'active':''?>" href="<?= \yii\helpers\Url::to(array_merge(['daily/index'],$params,['result'=>2])) ?>">取消</a></li>
         </ul>
     </div>
 </div>
@@ -47,7 +47,7 @@ echo $this->render('../menu');
                         <?php foreach ($v['records'] as $rk => $rv): ?>
                         <li class="mui-table-view-cell">
                             <div class="time"><?= ($rv['start_time'] ? date('Y-m-d H:i', $rv['start_time']) : '') . '-' . ($rv['end_time'] ? date('Y-m-d H:i', $rv['end_time']) : '') ?></div>
-                            <div class=""><?=$rv->resultText?></div><!--mui-text-danger取消 mui-text-success完成 mui-text-warning延后-->
+                            <div class="<?php if($rv->result==1):?>mui-text-success<?php elseif($rv->result==2):?>mui-text-danger<?php elseif($rv->result==3):?>mui-text-warning<?php endif;?>"><?=$rv->resultText?></div><!--mui-text-danger取消 mui-text-success完成 mui-text-warning延后-->
                         </li>
                         <?php endforeach; ?>
                     </ul>

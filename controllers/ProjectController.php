@@ -11,6 +11,7 @@ namespace app\controllers;
 
 use app\behaviors\LoginBehavior;
 use app\models\Customer;
+use app\models\CustomerPerson;
 use app\models\Project;
 use app\models\ProjectProgress;
 use app\models\User;
@@ -202,5 +203,26 @@ class ProjectController extends Controller
                 'msg' => '提交成功'
             ]);
         }
+    }
+
+    public function actionCustomerPersonList()
+    {
+        $customer_id = \Yii::$app->request->get('customer_id');
+        $person_list = CustomerPerson::find()->where([
+            'customer_id' => $customer_id
+        ])->asArray()->all();
+        $return = [];
+        foreach ($person_list as $row) {
+            $return[] = [
+                'value' => $row['name'],
+                'text' => $row['name']
+            ];
+        }
+        return $this->renderJson([
+            'code' => 200,
+            'data' => [
+                'list' => $return
+            ]
+        ]);
     }
 }

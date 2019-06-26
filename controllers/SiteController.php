@@ -76,6 +76,9 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if($this->layout != 'wap') {
+            return $this->redirect(['daily/index']);
+        }
         return $this->render('index');
     }
 }

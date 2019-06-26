@@ -41,6 +41,7 @@ class DailyController extends Controller
         $department = \Yii::$app->request->get('department');
         $username = \Yii::$app->request->get('username');
         $content = \Yii::$app->request->get('content');
+        $result = \Yii::$app->request->get('result');
         $departmentList = Department::getVisibleDepartment();
         $query = Task::find()->alias('t');
         $query->leftJoin(['u' => User::tableName()], 'u.id = t.user_id');
@@ -51,13 +52,15 @@ class DailyController extends Controller
         } else {
             $query->where(['u.id' => \Yii::$app->user->id]);
         }
+        if($result)
+            $query->andWhere(['result' => $result]);
         if($content)
             $query->andwhere(['like','t.content',$content]);
         $pagination = new Pagination(['totalCount' => $query->count(), 'defaultPageSize' => 20]);
-        $query->orderBy('t.id desc')->select('u.*,t.*');
+        $query->orderBy('t.updated_at desc')->select('u.*,t.*');
         $list = $query->offset($pagination->offset)->limit($pagination->limit)->asArray()->all();
         foreach($list as $k=>$v) {
-            $list[$k]['records'] = TaskRecord::find()->where(['task_id' => $v['id']])->all();
+            $list[$k]['records'] = TaskRecord::find()->where(['task_id' => $v['id']])->orderBy('id desc')->all();
         }
         $params = \Yii::$app->request->getQueryParams();
         return $this->render('daily', [
@@ -76,6 +79,7 @@ class DailyController extends Controller
             $taskForm->attributes = \Yii::$app->request->post();
             $taskForm->user_id = \Yii::$app->user->id;
             $taskForm->records = \Yii::$app->request->post('records');
+            $taskForm->oldRecords = \Yii::$app->request->post('oldRecords');
             $taskForm->save();
             return $this->redirect(['daily/detail', 'id' => $taskForm->id]);
         }
@@ -119,31 +123,24 @@ class DailyController extends Controller
     public function actionDelete()
     {
         $id = \Yii::$app->request->get('id');
-        $user = User::findOne($id);
-        if ($user->username == 'admin')
-            return $this->renderJson([
-                'code' => 1,
-                'msg' => "admin不能删除"
-            ]);
-        $user->delete();
-        return $this->renderJson([
-            'code' => 0,
-            'msg' => "删除成功"
+        $task = Task::findOne([
+            'id' => $id
         ]);
-    }
-
-    public function actionDeleteAll()
-    {
-        $ids = \Yii::$app->request->get('ids');
-        $idsArray = explode(',', $ids);
-        foreach ($idsArray as $id) {
-            $user = User::findOne($id);
-            if ($user->username == 'admin')
-                continue;
-            $user->delete();
+        if(!$task) {
+            return $this->renderJson([
+                'code' => 404,
+                'msg' => '任务不存在'
+            ]);
         }
+        if($task->user_id != \Yii::$app->user->id) {
+            return $this->renderJson([
+                'code' => 403,
+                'msg' => '不能删除他人任务'
+            ]);
+        }
+        $task->delete();
         return $this->renderJson([
-            'code' => 0,
+            'code' => 200,
             'msg' => "删除成功"
         ]);
     }
