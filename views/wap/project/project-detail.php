@@ -15,6 +15,10 @@ echo $this->render('../header',[
             <div class="readonly-input"><?=$project->name?></div>
         </div>
         <div class="mui-input-row">
+            <label>项目所属</label>
+            <div class="readonly-input"><?=$project->belongTo?></div>
+        </div>
+        <div class="mui-input-row">
             <label>客户名称</label>
             <div class="readonly-input"><a href="<?=\yii\helpers\Url::to(['customer/detail','id'=>$project->customer->id])?>" class="href-a"><?=$project->customer->name?></a></div>
         </div>
@@ -24,7 +28,7 @@ echo $this->render('../header',[
         </div>
         <div class="mui-input-row">
             <label>预估案值</label>
-            <div class="readonly-input"><?=$project->plan_price?>元</div>
+            <div class="readonly-input"><?=$project->plan_price?>万元</div>
         </div>
         <div class="mui-input-row">
             <label>预估周期</label>
@@ -63,7 +67,7 @@ echo $this->render('../header',[
             <div class="mui-input-row has-units">
                 <label>实际产值</label>
                 <input type="number" name="real_price" value="<?=$project->real_price?>" autocomplete="off" placeholder="请填写实际产值" datatype="*" nullmsg="请填写实际产值" />
-                <span class="mui-input-units">元</span>
+                <span class="mui-input-units">万元</span>
             </div>
             <div class="mui-input-row">
                 <label>实际周期</label>

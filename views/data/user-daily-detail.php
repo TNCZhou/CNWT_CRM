@@ -33,18 +33,6 @@
                             </div>
                             <?php endforeach;?>
                             <hr>
-                            <?php if($task->user_id == \Yii::$app->user->id):?>
-                            <div class="am-cf am-margin-vertical-sm">
-                                <div class="am-u-sm-9 am-u-sm-push-3">
-                                    <a href="<?=\yii\helpers\Url::to(['daily/edit','id'=>$task['id']])?>" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-pencil-square-o"></span> 修改日志</a>
-                                </div>
-                            </div>
-                            <div class="am-cf am-margin-vertical-sm">
-                                <div class="am-u-sm-9 am-u-sm-push-3">
-                                    <a href="<?=\yii\helpers\Url::to(['daily/edit'])?>" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-pencil-square-o"></span> 新增日志</a>
-                                </div>
-                            </div>
-                            <?php endif;?>
                         </div>
                     </div>
 

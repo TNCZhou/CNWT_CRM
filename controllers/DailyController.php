@@ -43,23 +43,24 @@ class DailyController extends Controller
         $content = \Yii::$app->request->get('content');
         $result = \Yii::$app->request->get('result');
         $departmentList = Department::getVisibleDepartment();
+        $departmentList = [];
         $query = Task::find()->alias('t');
         $query->leftJoin(['u' => User::tableName()], 'u.id = t.user_id');
         if ($department && $departmentList[$department]) {
             $query->where(['u.department' => $department]);
-            if($username)
-                $query->andWhere(['like','u.realname',$username]);
+            if ($username)
+                $query->andWhere(['like', 'u.realname', $username]);
         } else {
             $query->where(['u.id' => \Yii::$app->user->id]);
         }
-        if($result)
+        if ($result)
             $query->andWhere(['result' => $result]);
-        if($content)
-            $query->andwhere(['like','t.content',$content]);
+        if ($content)
+            $query->andwhere(['like', 't.content', $content]);
         $pagination = new Pagination(['totalCount' => $query->count(), 'defaultPageSize' => 20]);
         $query->orderBy('t.updated_at desc')->select('u.*,t.*');
         $list = $query->offset($pagination->offset)->limit($pagination->limit)->asArray()->all();
-        foreach($list as $k=>$v) {
+        foreach ($list as $k => $v) {
             $list[$k]['records'] = TaskRecord::find()->where(['task_id' => $v['id']])->orderBy('id desc')->all();
         }
         $params = \Yii::$app->request->getQueryParams();
@@ -96,24 +97,10 @@ class DailyController extends Controller
 
     public function actionDetail()
     {
-
         $id = \Yii::$app->request->get('id');
         $task = Task::findOne($id);
-        switch(\Yii::$app->user->identity->level) {
-            case 3:
-                $taskUser = User::findOne($task->user_id);
-                $visible = $taskUser->department == \Yii::$app->user->identity->department;
-                break;
-            case 4:
-                $visible = true;
-                break;
-            case 1:
-            case 2:
-            default:
-                $visible = $task->user_id == \Yii::$app->user->id;
-                break;
-        }
-        if(!$visible)
+        $visible = $task->user_id == \Yii::$app->user->id;
+        if (!$visible)
             exit('permission denied');
         return $this->render('daily-detail', [
             'task' => $task
@@ -126,13 +113,13 @@ class DailyController extends Controller
         $task = Task::findOne([
             'id' => $id
         ]);
-        if(!$task) {
+        if (!$task) {
             return $this->renderJson([
                 'code' => 404,
                 'msg' => '任务不存在'
             ]);
         }
-        if($task->user_id != \Yii::$app->user->id) {
+        if ($task->user_id != \Yii::$app->user->id) {
             return $this->renderJson([
                 'code' => 403,
                 'msg' => '不能删除他人任务'

@@ -46,7 +46,7 @@ echo $this->render('../menu');
                     <ul class="mui-table-view">
                         <?php foreach ($v['records'] as $rk => $rv): ?>
                         <li class="mui-table-view-cell">
-                            <div class="time"><?= ($rv['start_time'] ? date('Y-m-d H:i', $rv['start_time']) : '') . '-' . ($rv['end_time'] ? date('Y-m-d H:i', $rv['end_time']) : '') ?></div>
+                            <div class="time"><?=$rv['remark']?></div>
                             <div class="<?php if($rv->result==1):?>mui-text-success<?php elseif($rv->result==2):?>mui-text-danger<?php elseif($rv->result==3):?>mui-text-warning<?php endif;?>"><?=$rv->resultText?></div><!--mui-text-danger取消 mui-text-success完成 mui-text-warning延后-->
                         </li>
                         <?php endforeach; ?>

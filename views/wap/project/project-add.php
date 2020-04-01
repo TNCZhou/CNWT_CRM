@@ -13,6 +13,12 @@ echo $this->render('../header',[
             <input type="text" name="name" autocomplete="off" placeholder="请输入项目名称" value="" datatype="*" nullmsg="请输入项目名称" />
         </div>
         <div class="mui-input-row has-units">
+            <label>项目所属</label>
+            <div class="readonly-input select" id="belong">请选择项目所属公司</div>
+            <span class="mui-input-units mui-icon mui-icon-arrowdown"></span>
+            <input type="hidden" name="belong" value="" datatype="*" nullmsg="请选择项目所属公司" />
+        </div>
+        <div class="mui-input-row has-units">
             <label>客户名称</label>
             <div class="readonly-input select" id="customers">请选择客户</div>
             <span class="mui-input-units mui-icon mui-icon-arrowdown"></span>
@@ -123,7 +129,6 @@ echo $this->render('../header',[
                 })
             })
         });
-
         mui('body').on('tap','#abutment',function() {
             var _this = $(this);
             if($('input[name=customer_id]').val()==''){
@@ -135,7 +140,21 @@ echo $this->render('../header',[
                 })
             }
         });
-
+        <?php foreach (\Yii::$app->params['companies'] as $k=>$v):
+        $p[] = [
+            'value' => $k,
+            'text' => $v
+        ];
+    endforeach;?>
+        var starPicker = new mui.PopPicker();
+        starPicker.setData(<?=json_encode($p)?>);
+        mui('body').on('tap','#belong',function(){
+            var _this = $(this);
+            starPicker.show(function(res) {
+                _this.html(res[0].text).addClass('fc_black');
+                $('input[name=belong]').val(res[0].value);
+            })
+        });
         $(".validform").Validform({
             tiptype:'wap',
             ajaxPost:true,

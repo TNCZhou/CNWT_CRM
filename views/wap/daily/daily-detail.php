@@ -41,6 +41,9 @@ echo $this->render('../header',[
 <div class="margin mui-text-center">
     <a href="<?=\yii\helpers\Url::to(['daily/edit','id'=>$task['id']])?>" class="mui-btn mui-btn-primary btn-mini href-a">修改日志</a>
 </div>
+    <div class="margin mui-text-center">
+    <a href="<?=\yii\helpers\Url::to(['daily/edit'])?>" class="mui-btn mui-btn-primary btn-mini href-a">新增日志</a>
+    </div>
 <?php endif;?>
 </body>
 </html>

@@ -75,4 +75,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return md5('#~!cnwt!~#'.$password);
     }
+
+    public function getDepartments()
+    {
+        return $this->hasOne(Department::className(),['id' => 'department']);
+    }
 }

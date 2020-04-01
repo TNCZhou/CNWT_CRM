@@ -47,11 +47,7 @@
                                 <div class="am-u-sm-3 am-text-right">实际周期：</div>
                                 <div class="am-u-sm-9"><?=$project->real_start_date?> 至 <?=$project->real_end_date?></div>
                             </div>
-                            <div class="am-cf am-margin-vertical-sm">
-                                <div class="am-u-sm-9 am-u-sm-push-3">
-                                    <button type="button" id="project-edit" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-pencil-square-o"></span> 修改项目信息</button>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -66,11 +62,7 @@
                         <div class="caption bold">
                             项目进度详情
                         </div>
-                        <?php if($inProject):?>
-                        <div class="tpl-portlet-input tpl-fz-ml" style="float: none;">
-                            <button type="button" id="add-progress" class="am-btn am-btn-primary am-btn-sm"><span class="am-icon-plus"></span> 新增项目进度</button>
-                        </div>
-                        <?php endif;?>
+
                     </div>
 
                     <div class="am-g tpl-amazeui-form">

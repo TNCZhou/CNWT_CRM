@@ -22,7 +22,7 @@ class Project extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'customer_id', 'customer_incharge', 'plan_price', 'plan_start_date', 'plan_end_date', 'project_incharge', 'project_participants', 'real_start_date', 'real_end_date', 'real_price'], 'safe'],
+            [['name', 'customer_id', 'customer_incharge', 'plan_price', 'plan_start_date', 'plan_end_date', 'project_incharge', 'project_participants', 'real_start_date', 'real_end_date', 'real_price', 'belong'], 'safe'],
         ];
     }
 
@@ -57,5 +57,10 @@ class Project extends ActiveRecord
     public function getProgressList()
     {
         return $this->hasMany(ProjectProgress::className(), ['project_id' => 'id'])->orderBy('dateline desc')->all();
+    }
+
+    public function getBelongTo()
+    {
+        return \Yii::$app->params['companies'][$this->belong];
     }
 }

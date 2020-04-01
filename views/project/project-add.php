@@ -25,6 +25,18 @@
                             </div>
 
                             <div class="am-form-group">
+                                <label class="am-u-sm-3 am-form-label">项目所属</label>
+                                <div class="am-u-sm-9">
+                                    <select name="belong" data-am-selected="{searchBox: 1,btnWidth: '100%'}">
+                                        <?php foreach(\Yii::$app->params['companies'] as $k=>$v):?>
+                                            <option value="<?=$k?>"><?=$v?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                    <small class="Validform_checktip"></small>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
                                 <label class="am-u-sm-3 am-form-label">客户名称</label>
                                 <div class="am-u-sm-9">
                                     <select name="customer_id" data-am-selected="{searchBox: 1,btnWidth: '100%'}">

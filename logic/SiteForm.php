@@ -31,6 +31,31 @@ class SiteForm extends Model
                 'group' => 'daily',
                 'route' => 'daily/index',
             ],
+            [
+                'name' => '数据管理',
+                'icon' => 'am-icon-wpforms',
+                'group' => 'data',
+                'sub' => [
+                    [
+                        'name' => '日志数据',
+                        'icon' => 'am-icon-wpforms',
+                        'group' => 'data',
+                        'route' => 'data/index',
+                    ],
+                    [
+                        'name' => '日志记录',
+                        'icon' => 'am-icon-wpforms',
+                        'group' => 'data',
+                        'route' => 'data/daily-record',
+                    ],
+                    [
+                        'name' => '项目数据',
+                        'icon' => 'am-icon-wpforms',
+                        'group' => 'data',
+                        'route' => 'data/project',
+                    ],
+                ]
+            ],
         ];
         if(\Yii::$app->user->identity->department == 1)
             array_push($menu, [

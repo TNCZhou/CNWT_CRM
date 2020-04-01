@@ -1,19 +1,9 @@
 <div class="tpl-content-wrapper">
     <div class="tpl-content-page-title">
-        工作日志<a class="am-btn am-btn-primary am-fr am-radius" href="<?=\yii\helpers\Url::to(['daily/edit'])?>"><i class="am-icon-pencil-square-o"></i> 填写工作日志</a>
+        工作日志
     </div>
     <div class="tpl-portlet-components">
         <div class="portlet-title tpl-index-tabs">
-            <ul class="am-tabs-nav am-nav am-nav-tabs portlet-tab">
-                <?php foreach ($departmentList as $k => $v): ?>
-                    <li <?php if ($params['department'] == $k): ?>class="am-active"<?php endif; ?>><a
-                                href="<?= \yii\helpers\Url::to(['daily/index', 'department' => $k]) ?>"><span><?= $v ?>
-                                日志</span></a></li>
-                <?php endforeach; ?>
-                <li <?php if (!$params['department']): ?>class="am-active"<?php endif; ?>><a
-                            href="<?= \yii\helpers\Url::to(['daily/index', 'department' => '']) ?>"><span>我的日志</span></a>
-                </li>
-            </ul>
             <?php if($params['department']):?>
             <div class="tpl-portlet-input tpl-fz-ml">
                 <div class="portlet-input input-inline">
@@ -62,7 +52,7 @@
                                 <tr>
                                     <td>
                                         <?php foreach ($v['records'] as $rk => $rv): ?>
-                                            <div><?= $rv['remark']?></div>
+                                            <div><?=date('Y-m-d H:i:s', $rv['start_time'])?> -- <?=date('Y-m-d H:i:s', $rv['end_time'])?></div>
                                         <?php endforeach; ?>
                                     </td>
                                     <td><?=$v['content']?></td>
@@ -72,9 +62,8 @@
                                     <td>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <a href="<?=\yii\helpers\Url::to(['daily/detail','id'=>$v['id']])?>" class="am-btn am-btn-default am-btn-xs am-text-primary"><span
+                                                <a href="<?=\yii\helpers\Url::to(['data/user-daily-detail','id'=>$v['id']])?>" class="am-btn am-btn-default am-btn-xs am-text-primary"><span
                                                             class="am-icon-file-text-o"></span> 详情</a>
-                                                <a id="<?=$v['id']?>" class="delete-task am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
                                             </div>
                                         </div>
                                     </td>
